@@ -2,7 +2,7 @@
 import torch.nn as nn
 from mmcv.cnn import ConvModule, xavier_init
 
-from mmseg.ops import resize
+from rsiseg.ops import resize
 from ..builder import NECKS
 
 

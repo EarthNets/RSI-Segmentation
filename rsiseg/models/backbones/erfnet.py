@@ -4,7 +4,7 @@ import torch.nn as nn
 from mmcv.cnn import build_activation_layer, build_conv_layer, build_norm_layer
 from mmcv.runner import BaseModule
 
-from mmseg.ops import resize
+from rsiseg.ops import resize
 from ..builder import BACKBONES
 
 

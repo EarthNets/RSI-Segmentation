@@ -4,7 +4,7 @@ import warnings
 
 from mmcv.runner import DefaultOptimizerConstructor, get_dist_info
 
-from mmseg.utils import get_root_logger
+from rsiseg.utils import get_root_logger
 from ..builder import OPTIMIZER_BUILDERS
 
 

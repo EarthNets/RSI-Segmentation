@@ -11,10 +11,10 @@ from mmcv.runner import (HOOKS, DistSamplerSeedHook, EpochBasedRunner,
                          build_runner, get_dist_info)
 from mmcv.utils import build_from_cfg
 
-from mmseg import digit_version
-from mmseg.core import DistEvalHook, EvalHook, build_optimizer
-from mmseg.datasets import build_dataloader, build_dataset
-from mmseg.utils import find_latest_checkpoint, get_root_logger
+from rsiseg import digit_version
+from rsiseg.core import DistEvalHook, EvalHook, build_optimizer
+from rsiseg.utils import find_latest_checkpoint, get_root_logger
+from rsiseg.datasets import build_dataloader, build_dataset 
 
 
 def init_random_seed(seed=None, device='cuda'):

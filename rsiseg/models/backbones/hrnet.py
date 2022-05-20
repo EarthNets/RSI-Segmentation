@@ -6,7 +6,7 @@ from mmcv.cnn import build_conv_layer, build_norm_layer
 from mmcv.runner import BaseModule, ModuleList, Sequential
 from mmcv.utils.parrots_wrapper import _BatchNorm
 
-from mmseg.ops import Upsample, resize
+from rsiseg.ops import Upsample, resize
 from ..builder import BACKBONES
 from .resnet import BasicBlock, Bottleneck
 
@@ -255,7 +255,7 @@ class HRNet(BaseModule):
             Default: None.
 
     Example:
-        >>> from mmseg.models import HRNet
+        >>> from rsiseg.models import HRNet
         >>> import torch
         >>> extra = dict(
         >>>     stage1=dict(

@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 from mmcv.cnn import ConvModule, DepthwiseSeparableConvModule
 
-from mmseg.ops import resize
+from rsiseg.ops import resize
 from ..builder import HEADS
 from .aspp_head import ASPPHead, ASPPModule
 

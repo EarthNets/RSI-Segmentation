@@ -3,9 +3,9 @@ import torch
 import torch.nn as nn
 from mmcv.cnn import ConvModule
 
-from mmseg.models.builder import HEADS
-from mmseg.models.decode_heads.decode_head import BaseDecodeHead
-from mmseg.ops import resize
+from rsiseg.models.builder import HEADS
+from rsiseg.models.decode_heads.decode_head import BaseDecodeHead
+from rsiseg.ops import resize
 
 
 @HEADS.register_module()

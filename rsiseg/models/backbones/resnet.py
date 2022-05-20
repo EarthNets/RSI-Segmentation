@@ -371,7 +371,7 @@ class ResNet(BaseModule):
             Default: None.
 
     Example:
-        >>> from mmseg.models import ResNet
+        >>> from rsiseg.models import ResNet
         >>> import torch
         >>> self = ResNet(depth=18)
         >>> self.eval()

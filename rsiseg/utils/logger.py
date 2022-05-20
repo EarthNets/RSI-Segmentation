@@ -10,7 +10,7 @@ def get_root_logger(log_file=None, log_level=logging.INFO):
     The logger will be initialized if it has not been initialized. By default a
     StreamHandler will be added. If `log_file` is specified, a FileHandler will
     also be added. The name of the root logger is the top-level package name,
-    e.g., "mmseg".
+    e.g., "rsiseg".
 
     Args:
         log_file (str | None): The log filename. If specified, a FileHandler
@@ -23,6 +23,6 @@ def get_root_logger(log_file=None, log_level=logging.INFO):
         logging.Logger: The root logger.
     """
 
-    logger = get_logger(name='mmseg', log_file=log_file, log_level=log_level)
+    logger = get_logger(name='rsiseg', log_file=log_file, log_level=log_level)
 
     return logger

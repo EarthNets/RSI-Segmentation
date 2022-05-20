@@ -5,8 +5,8 @@ import torch
 from mmcv.parallel import collate, scatter
 from mmcv.runner import load_checkpoint
 
-from mmseg.datasets.pipelines import Compose
-from mmseg.models import build_segmentor
+from rsiseg.models import build_segmentor
+from Dataset4EO import datasets
 
 
 def init_segmentor(config, checkpoint=None, device='cuda:0'):
@@ -40,36 +40,8 @@ def init_segmentor(config, checkpoint=None, device='cuda:0'):
     return model
 
 
-class LoadImage:
-    """A simple pipeline to load image."""
-
-    def __call__(self, results):
-        """Call function to load images into results.
-
-        Args:
-            results (dict): A result dict contains the file name
-                of the image to be read.
-
-        Returns:
-            dict: ``results`` will be returned containing loaded image.
-        """
-
-        if isinstance(results['img'], str):
-            results['filename'] = results['img']
-            results['ori_filename'] = results['img']
-        else:
-            results['filename'] = None
-            results['ori_filename'] = None
-        img = mmcv.imread(results['img'])
-        results['img'] = img
-        results['img_shape'] = img.shape
-        results['ori_shape'] = img.shape
-        return results
-
-
 def inference_segmentor(model, img):
-    """Inference image(s) with the segmentor.
-
+    '''Inference image(s) with the segmentor.
     Args:
         model (nn.Module): The loaded segmentor.
         imgs (str/ndarray or list[str/ndarray]): Either image files or loaded
@@ -77,7 +49,7 @@ def inference_segmentor(model, img):
 
     Returns:
         (list[Tensor]): The segmentation result.
-    """
+    '''
     cfg = model.cfg
     device = next(model.parameters()).device  # model device
     # build the data pipeline

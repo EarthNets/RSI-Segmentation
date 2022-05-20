@@ -7,9 +7,9 @@ from mmcv.cnn.bricks.transformer import (FFN, TRANSFORMER_LAYER,
                                          MultiheadAttention,
                                          build_transformer_layer)
 
-from mmseg.models.builder import HEADS, build_head
-from mmseg.models.decode_heads.decode_head import BaseDecodeHead
-from mmseg.utils import get_root_logger
+from rsiseg.models.builder import HEADS, build_head
+from rsiseg.models.decode_heads.decode_head import BaseDecodeHead
+from rsiseg.utils import get_root_logger
 
 
 @TRANSFORMER_LAYER.register_module()

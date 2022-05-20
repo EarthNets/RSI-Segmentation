@@ -116,7 +116,7 @@ class ResNeXt(ResNet):
             in resblocks to let them behave as identity.
 
     Example:
-        >>> from mmseg.models import ResNeXt
+        >>> from rsiseg.models import ResNeXt
         >>> import torch
         >>> self = ResNeXt(depth=50)
         >>> self.eval()

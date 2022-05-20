@@ -45,7 +45,7 @@ class EvalHook(_EvalHook):
         if not self._should_evaluate(runner):
             return
 
-        from mmseg.apis import single_gpu_test
+        from rsiseg.apis import single_gpu_test
         results = single_gpu_test(
             runner.model, self.dataloader, show=False, pre_eval=self.pre_eval)
         runner.log_buffer.clear()
@@ -109,7 +109,7 @@ class DistEvalHook(_DistEvalHook):
         if tmpdir is None:
             tmpdir = osp.join(runner.work_dir, '.eval_hook')
 
-        from mmseg.apis import multi_gpu_test
+        from rsiseg.apis import multi_gpu_test
         results = multi_gpu_test(
             runner.model,
             self.dataloader,

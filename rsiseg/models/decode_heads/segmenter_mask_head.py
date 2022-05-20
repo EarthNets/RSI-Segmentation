@@ -7,7 +7,7 @@ from mmcv.cnn.utils.weight_init import (constant_init, trunc_normal_,
                                         trunc_normal_init)
 from mmcv.runner import ModuleList
 
-from mmseg.models.backbones.vit import TransformerEncoderLayer
+from rsiseg.models.backbones.vit import TransformerEncoderLayer
 from ..builder import HEADS
 from .decode_head import BaseDecodeHead
 

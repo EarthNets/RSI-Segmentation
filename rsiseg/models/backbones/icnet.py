@@ -4,7 +4,7 @@ import torch.nn as nn
 from mmcv.cnn import ConvModule
 from mmcv.runner import BaseModule
 
-from mmseg.ops import resize
+from rsiseg.ops import resize
 from ..builder import BACKBONES, build_backbone
 from ..decode_heads.psp_head import PPM
 

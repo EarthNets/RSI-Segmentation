@@ -4,7 +4,7 @@ import torch.nn as nn
 from mmcv import is_tuple_of
 from mmcv.cnn import ConvModule
 
-from mmseg.ops import resize
+from rsiseg.ops import resize
 from ..builder import HEADS
 from .decode_head import BaseDecodeHead
 

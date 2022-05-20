@@ -8,7 +8,7 @@ from mmcv.cnn import (UPSAMPLE_LAYERS, ConvModule, build_activation_layer,
 from mmcv.runner import BaseModule
 from mmcv.utils.parrots_wrapper import _BatchNorm
 
-from mmseg.ops import Upsample
+from rsiseg.ops import Upsample
 from ..builder import BACKBONES
 from ..utils import UpConvBlock
 

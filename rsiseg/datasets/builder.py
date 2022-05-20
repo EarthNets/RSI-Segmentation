@@ -9,7 +9,7 @@ import torch
 from mmcv.parallel import collate
 from mmcv.runner import get_dist_info
 from mmcv.utils import Registry, build_from_cfg, digit_version
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader2
 
 from .samplers import DistributedSampler
 
@@ -99,10 +99,8 @@ def build_dataloader(dataset,
                      persistent_workers=True,
                      **kwargs):
     """Build PyTorch DataLoader.
-
     In distributed training, each GPU/process has a dataloader.
     In non-distributed training, there is only one dataloader for all GPUs.
-
     Args:
         dataset (Dataset): A PyTorch dataset.
         samples_per_gpu (int): Number of training samples on each GPU, i.e.,
@@ -124,7 +122,6 @@ def build_dataloader(dataset,
             The argument also has effect in PyTorch>=1.7.0.
             Default: True
         kwargs: any keyword argument to be used to initialize DataLoader
-
     Returns:
         DataLoader: A PyTorch dataloader.
     """
@@ -175,9 +172,7 @@ def build_dataloader(dataset,
 
 def worker_init_fn(worker_id, num_workers, rank, seed):
     """Worker init func for dataloader.
-
     The seed of each worker equals to num_worker * rank + worker_id + user_seed
-
     Args:
         worker_id (int): Worker id.
         num_workers (int): Number of workers.

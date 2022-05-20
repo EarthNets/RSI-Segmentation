@@ -3,8 +3,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from mmseg.core import add_prefix
-from mmseg.ops import resize
+from rsiseg.core import add_prefix
+from rsiseg.ops import resize
 from .. import builder
 from ..builder import SEGMENTORS
 from .base import BaseSegmentor
@@ -128,7 +128,7 @@ class EncoderDecoder(BaseSegmentor):
                 has: 'img_shape', 'scale_factor', 'flip', and may also contain
                 'filename', 'ori_shape', 'pad_shape', and 'img_norm_cfg'.
                 For details on the values of these keys see
-                `mmseg/datasets/pipelines/formatting.py:Collect`.
+                `rsiseg/datasets/pipelines/formatting.py:Collect`.
             gt_semantic_seg (Tensor): Semantic segmentation masks
                 used if the architecture supports semantic segmentation task.
 
@@ -225,7 +225,7 @@ class EncoderDecoder(BaseSegmentor):
                 'scale_factor', 'flip', and may also contain
                 'filename', 'ori_shape', 'pad_shape', and 'img_norm_cfg'.
                 For details on the values of these keys see
-                `mmseg/datasets/pipelines/formatting.py:Collect`.
+                `rsiseg/datasets/pipelines/formatting.py:Collect`.
             rescale (bool): Whether rescale back to original shape.
 
         Returns:

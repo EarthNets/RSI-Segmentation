@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from mmcv.cnn import ConvModule, build_norm_layer
 
-from mmseg.ops import Encoding, resize
+from rsiseg.ops import Encoding, resize
 from ..builder import HEADS, build_loss
 from .decode_head import BaseDecodeHead
 

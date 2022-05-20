@@ -14,8 +14,8 @@ from mmcv.runner import (BaseModule, CheckpointLoader, ModuleList,
 from torch.nn.modules.batchnorm import _BatchNorm
 from torch.nn.modules.utils import _pair as to_2tuple
 
-from mmseg.ops import resize
-from mmseg.utils import get_root_logger
+from rsiseg.ops import resize
+from rsiseg.utils import get_root_logger
 from ..builder import BACKBONES
 from ..utils import PatchEmbed
 
