@@ -1,3 +1,3 @@
-rm -rf Dataset4EO.egg-info/
+rm -rf RSI_Segmentation.egg-info
 rm -rf build
 rm -rf dist

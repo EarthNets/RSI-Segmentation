@@ -201,6 +201,7 @@ class BaseDecodeHead(BaseModule, metaclass=ABCMeta):
             dict[str, Tensor]: a dictionary of loss components
         """
         seg_logits = self.forward(inputs)
+        gt_semantic_seg = gt_semantic_seg.type(torch.LongTensor).cuda()
         losses = self.losses(seg_logits, gt_semantic_seg)
         return losses
 

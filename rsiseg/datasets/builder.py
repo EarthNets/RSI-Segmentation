@@ -9,7 +9,8 @@ import torch
 from mmcv.parallel import collate
 from mmcv.runner import get_dist_info
 from mmcv.utils import Registry, build_from_cfg, digit_version
-from torch.utils.data import DataLoader2
+#from torchdata.dataloader2 import DataLoader2 as DataLoader
+from torch.utils.data import DataLoader
 
 from .samplers import DistributedSampler
 
@@ -70,14 +71,6 @@ def build_dataset(cfg, default_args=None):
                                    RepeatDataset)
     if isinstance(cfg, (list, tuple)):
         dataset = ConcatDataset([build_dataset(c, default_args) for c in cfg])
-    elif cfg['type'] == 'RepeatDataset':
-        dataset = RepeatDataset(
-            build_dataset(cfg['dataset'], default_args), cfg['times'])
-    elif cfg['type'] == 'MultiImageMixDataset':
-        cp_cfg = copy.deepcopy(cfg)
-        cp_cfg['dataset'] = build_dataset(cp_cfg['dataset'])
-        cp_cfg.pop('type')
-        dataset = MultiImageMixDataset(**cp_cfg)
     elif isinstance(cfg.get('img_dir'), (list, tuple)) or isinstance(
             cfg.get('split', None), (list, tuple)):
         dataset = _concat_dataset(cfg, default_args)
@@ -125,6 +118,7 @@ def build_dataloader(dataset,
     Returns:
         DataLoader: A PyTorch dataloader.
     """
+    drop_last = False
     rank, world_size = get_dist_info()
     if dist:
         sampler = DistributedSampler(
