@@ -1,6 +1,6 @@
 
 # RSI-Segmentation
-
+![avatar](resources/seg.png)
 ## License
 
 This project is released under the [Apache 2.0 license](LICENSE).
