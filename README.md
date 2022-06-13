@@ -1,3 +1,6 @@
+
+# RSI-Segmentation
+
 ## License
 
 This project is released under the [Apache 2.0 license](LICENSE).
@@ -100,22 +103,12 @@ Please refer to [FAQ](docs/en/faq.md) for frequently asked questions.
 
 If you find this project useful in your research, please consider cite:
 
-```bibtex
-@misc{mmseg2020,
-    title={{MMSegmentation}: OpenMMLab Semantic Segmentation Toolbox and Benchmark},
-    author={MMSegmentation Contributors},
-    howpublished = {\url{https://github.com/open-mmlab/mmsegmentation}},
-    year={2020}
-}
-```
-
 ## Contributing
 
-We appreciate all contributions to improve MMSegmentation. Please refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the contributing guideline.
+We appreciate all contributions. Please refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the contributing guideline.
 
 ## Acknowledgement
 
-MMSegmentation is an open source project that welcome any contribution and feedback.
 We wish that the toolbox and benchmark could serve the growing research
 community by providing a flexible as well as standardized toolkit to reimplement existing methods
 and develop their own new semantic segmentation methods.
