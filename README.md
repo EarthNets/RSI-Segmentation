@@ -1,6 +1,8 @@
 
 # RSI-Segmentation
-![avatar](resources/seg.png)
+<div  align="center">    
+ <img src="resources/seg.png" width = "300" height = "200" alt="segmentation" align=center />
+</div>
 ## License
 
 This project is released under the [Apache 2.0 license](LICENSE).
