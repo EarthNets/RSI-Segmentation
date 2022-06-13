@@ -9,34 +9,21 @@ from mmcv.utils import print_log
 from prettytable import PrettyTable
 from torch.utils.data import Dataset
 
+import pathlib
 from rsiseg.core import eval_metrics, intersect_and_union, pre_eval_to_metrics
 from rsiseg.utils import get_root_logger
 from .builder import DATASETS
 from .pipelines import Compose, LoadAnnotations
-from Dataset4EO.datasets import voc
+from Dataset4EO.datasets import dfc2020
 
 
 @DATASETS.register_module()
-class PascalVOCDataset(Dataset):
-    CLASSES = ('background', 'aeroplane', 'bicycle', 'bird', 'boat', 'bottle',
-               'bus', 'car', 'cat', 'chair', 'cow', 'diningtable', 'dog',
-               'horse', 'motorbike', 'person', 'pottedplant', 'sheep', 'sofa',
-               'train', 'tvmonitor')
-
-    PALETTE = [[0, 0, 0], [128, 0, 0], [0, 128, 0], [128, 128, 0], [0, 0, 128],
-               [128, 0, 128], [0, 128, 128], [128, 128, 128], [64, 0, 0],
-               [192, 0, 0], [64, 128, 0], [192, 128, 0], [64, 0, 128],
-               [192, 0, 128], [64, 128, 128], [192, 128, 128], [0, 64, 0],
-               [128, 64, 0], [0, 192, 0], [128, 192, 0], [0, 64, 128]]
-
+class EODataset(Dataset):
     def __init__(self,
                  pipeline,
-                 img_dir,
-                 img_suffix='.jpg',
-                 ann_dir=None,
-                 seg_map_suffix='.png',
                  split=None,
                  data_root=None,
+                 datapipe=None,
                  test_mode=False,
                  ignore_index=255,
                  reduce_zero_label=False,
@@ -45,18 +32,15 @@ class PascalVOCDataset(Dataset):
                  gt_seg_map_loader_cfg=None,
                  file_client_args=dict(backend='disk')):
         self.pipeline = Compose(pipeline)
-        self.img_dir = img_dir
-        self.img_suffix = img_suffix
-        self.ann_dir = ann_dir
-        self.seg_map_suffix = seg_map_suffix
         self.split = split
         self.data_root = data_root
         self.test_mode = test_mode
         self.ignore_index = ignore_index
         self.reduce_zero_label = reduce_zero_label
         self.label_map = None
-        self.CLASSES, self.PALETTE = self.get_classes_and_palette(
-            classes, palette)
+        #self.CLASSES, self.PALETTE = self.get_classes_and_palette(
+        #    classes, palette)
+        gt_seg_map_loader_cfg = dict(imdecode_backend='h5py')
         self.gt_seg_map_loader = LoadAnnotations(
         ) if gt_seg_map_loader_cfg is None else LoadAnnotations(
             **gt_seg_map_loader_cfg)
@@ -64,20 +48,16 @@ class PascalVOCDataset(Dataset):
         self.file_client_args = file_client_args
         self.file_client = mmcv.FileClient.infer_client(self.file_client_args)
 
+
+        #self._dataset = load(datapipe, root=data_root, split=self.split)
+        self._dataset = dfc2020.DFC2020(root=data_root, split=self.split)
+        self.CLASSES = self._dataset.CLASSES
+        self.PALETTE = self._dataset.PALETTE
+        self.custom_classes = False
+
         if test_mode:
             assert self.CLASSES is not None, \
                 '`cls.CLASSES` or `classes` should be specified when testing'
-
-        self._dataset = voc.VOC('data', split=self.split)
-
-        # join paths if data_root is specified
-        if self.data_root is not None:
-            if not osp.isabs(self.img_dir):
-                self.img_dir = osp.join(self.data_root, self.img_dir)
-            if not (self.ann_dir is None or osp.isabs(self.ann_dir)):
-                self.ann_dir = osp.join(self.data_root, self.ann_dir)
-            if not (self.split is None or osp.isabs(self.split)):
-                self.split = osp.join(self.data_root, self.split)
 
         self.img_infos = list(self._dataset)
 
@@ -97,8 +77,8 @@ class PascalVOCDataset(Dataset):
     def pre_pipeline(self, results):
         """Prepare results dict for pipeline."""
         results['seg_fields'] = []
-        results['img_prefix'] = self.img_dir
-        results['seg_prefix'] = self.ann_dir
+        #results['img_prefix'] = self.img_dir
+        #results['seg_prefix'] = self.ann_dir
         if self.custom_classes:
             results['label_map'] = self.label_map
         return results
