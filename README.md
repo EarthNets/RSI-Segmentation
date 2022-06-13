@@ -1,7 +1,7 @@
 
 # RSI-Segmentation
 <div  align="center">    
- <img src="resources/seg.png" width = "400" height = "150" alt="segmentation" align=center />
+ <img src="resources/seg.png" width = "400" height = "140" alt="segmentation" align=center />
 </div>
 ## License
 
