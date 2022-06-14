@@ -14,7 +14,7 @@ from rsiseg.core import eval_metrics, intersect_and_union, pre_eval_to_metrics
 from rsiseg.utils import get_root_logger
 from .builder import DATASETS
 from .pipelines import Compose, LoadAnnotations
-from Dataset4EO.datasets import dfc2020
+from Dataset4EO.datasets import dfc2020, load
 
 
 @DATASETS.register_module()
@@ -46,8 +46,8 @@ class EODataset(Dataset):
         self.file_client_args = file_client_args
         self.file_client = mmcv.FileClient.infer_client(self.file_client_args)
 
-        #self._dataset = load(datapipe, root=data_root, split=self.split)
-        self._dataset = dfc2020.DFC2020(root=data_root, split=self.split)
+        self._dataset = load(datapipe, root=data_root, split=self.split)
+        #self._dataset = dfc2020.DFC2020(root=data_root, split=self.split)
         self.CLASSES = self._dataset.CLASSES
         self.PALETTE = self._dataset.PALETTE
         self.custom_classes = False
