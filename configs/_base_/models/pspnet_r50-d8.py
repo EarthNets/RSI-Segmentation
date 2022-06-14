@@ -2,11 +2,15 @@
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 model = dict(
     type='EncoderDecoder',
-    pretrained='open-mmlab://resnet50_v1c',
+    #pretrained='open-mmlab://resnet50_v1c',
+    #pretrained='/home/xshadow/RSI-Segmentation/pretrained/resnet50_v1c-sp.pth',
+    #pretrained='/home/xshadow/RSI-Segmentation/pretrained/resnet_50_sp2.pth',
+    pretrained='/home/xshadow/RSI-Segmentation/pretrained/resnet50_v1c_layer.pth',
     backbone=dict(
         type='ResNetV1c',
         depth=50,
         num_stages=4,
+        in_channels=13, # new add
         out_indices=(0, 1, 2, 3),
         dilations=(1, 1, 2, 4),
         strides=(1, 2, 1, 1),

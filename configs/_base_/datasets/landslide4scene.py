@@ -1,6 +1,8 @@
 # dataset settings
-dataset_type = 'PascalVOCDataset'   #for creating datapipe
-data_root = '/home/xshadow/Dataset4EO'
+dataset_type = 'EODataset'
+datapipe = 'landslide4sense'
+#datapipe = 'dfc2020'
+data_root = '/home/xshadow/Dataset4EO/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 crop_size = (224, 224)
@@ -39,21 +41,18 @@ data = dict(
     train=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='JPEGImages',
-        ann_dir='SegmentationClass',
+        datapipe=datapipe,
         split='train',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='JPEGImages',
-        ann_dir='SegmentationClass',
+        datapipe=datapipe,
         split='test',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='JPEGImages',
-        ann_dir='SegmentationClass',
+        datapipe=datapipe,
         split='test',
         pipeline=test_pipeline))
