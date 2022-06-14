@@ -8,6 +8,7 @@ from rsiseg.ops import resize
 from .. import builder
 from ..builder import SEGMENTORS
 from .base import BaseSegmentor
+from mmcv.parallel import DataContainer
 
 
 @SEGMENTORS.register_module()
@@ -233,6 +234,10 @@ class EncoderDecoder(BaseSegmentor):
         """
 
         assert self.test_cfg.mode in ['slide', 'whole']
+        if isinstance(img_meta, DataContainer):
+            img_meta = img_meta.data
+            img_meta = img_meta[0]
+
         ori_shape = img_meta[0]['ori_shape']
         assert all(_['ori_shape'] == ori_shape for _ in img_meta)
         if self.test_cfg.mode == 'slide':

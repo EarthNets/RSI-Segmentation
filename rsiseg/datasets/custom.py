@@ -38,8 +38,6 @@ class EODataset(Dataset):
         self.ignore_index = ignore_index
         self.reduce_zero_label = reduce_zero_label
         self.label_map = None
-        #self.CLASSES, self.PALETTE = self.get_classes_and_palette(
-        #    classes, palette)
         gt_seg_map_loader_cfg = dict(imdecode_backend='h5py')
         self.gt_seg_map_loader = LoadAnnotations(
         ) if gt_seg_map_loader_cfg is None else LoadAnnotations(
@@ -76,10 +74,6 @@ class EODataset(Dataset):
     def pre_pipeline(self, results):
         """Prepare results dict for pipeline."""
         results['seg_fields'] = []
-        #results['img_prefix'] = self.img_dir
-        #results['seg_prefix'] = self.ann_dir
-        if self.custom_classes:
-            results['label_map'] = self.label_map
         return results
 
     def __getitem__(self, idx):

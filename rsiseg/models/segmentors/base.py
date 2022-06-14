@@ -8,6 +8,7 @@ import numpy as np
 import torch
 import torch.distributed as dist
 from mmcv.runner import BaseModule, auto_fp16
+from mmcv.parallel import DataContainer
 
 
 class BaseSegmentor(BaseModule, metaclass=ABCMeta):
@@ -81,6 +82,9 @@ class BaseSegmentor(BaseModule, metaclass=ABCMeta):
         # all images in the same aug batch all of the same ori_shape and pad
         # shape
         for img_meta in img_metas:
+            if isinstance(img_meta, DataContainer):
+                img_meta = img_meta.data
+                img_meta = img_meta[0]
             ori_shapes = [_['ori_shape'] for _ in img_meta]
             assert all(shape == ori_shapes[0] for shape in ori_shapes)
             img_shapes = [_['img_shape'] for _ in img_meta]
