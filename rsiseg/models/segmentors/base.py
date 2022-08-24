@@ -2,6 +2,7 @@
 import warnings
 from abc import ABCMeta, abstractmethod
 from collections import OrderedDict
+import pdb
 
 import mmcv
 import numpy as np
@@ -139,13 +140,15 @@ class BaseSegmentor(BaseModule, metaclass=ABCMeta):
                 DDP, it means the batch size on each GPU), which is used for
                 averaging the logs.
         """
-        losses = self(**data_batch)
+        losses, state = self(**data_batch)
         loss, log_vars = self._parse_losses(losses)
+        vis_data = {'img': data_batch['img'], 'gt': data_batch['gt_semantic_seg']}
 
         outputs = dict(
             loss=loss,
             log_vars=log_vars,
-            num_samples=len(data_batch['img_metas']))
+            num_samples=len(data_batch['img_metas']),
+            vis_data=vis_data)
 
         return outputs
 

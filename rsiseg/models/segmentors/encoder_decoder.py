@@ -2,6 +2,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import pdb
 
 from rsiseg.core import add_prefix
 from rsiseg.ops import resize
@@ -84,12 +85,12 @@ class EncoderDecoder(BaseSegmentor):
         """Run forward function and calculate loss for decode head in
         training."""
         losses = dict()
-        loss_decode = self.decode_head.forward_train(x, img_metas,
+        loss_decode, state = self.decode_head.forward_train(x, img_metas,
                                                      gt_semantic_seg,
                                                      self.train_cfg)
 
         losses.update(add_prefix(loss_decode, 'decode'))
-        return losses
+        return losses, state
 
     def _decode_head_forward_test(self, x, img_metas):
         """Run forward function and calculate loss for decode head in
@@ -101,24 +102,66 @@ class EncoderDecoder(BaseSegmentor):
         """Run forward function and calculate loss for auxiliary head in
         training."""
         losses = dict()
+        states = dict()
         if isinstance(self.auxiliary_head, nn.ModuleList):
             for idx, aux_head in enumerate(self.auxiliary_head):
-                loss_aux = aux_head.forward_train(x, img_metas,
-                                                  gt_semantic_seg,
-                                                  self.train_cfg)
+                loss_aux, state_aux = aux_head.forward_train(x, img_metas,
+                                                             gt_semantic_seg,
+                                                             self.train_cfg)
                 losses.update(add_prefix(loss_aux, f'aux_{idx}'))
+                states.update(add_prefix(state_aux, f'aux_{idx}'))
         else:
-            loss_aux = self.auxiliary_head.forward_train(
+            loss_aux, state_aux = self.auxiliary_head.forward_train(
                 x, img_metas, gt_semantic_seg, self.train_cfg)
             losses.update(add_prefix(loss_aux, 'aux'))
+            states.update(add_prefix(state_aux, 'aux'))
 
-        return losses
+        return losses, states
 
     def forward_dummy(self, img):
         """Dummy forward function."""
         seg_logit = self.encode_decode(img, None)
 
         return seg_logit
+
+    def train_step(self, data_batch, optimizer, **kwargs):
+        """The iteration step during training.
+
+        This method defines an iteration step during training, except for the
+        back propagation and optimizer updating, which are done in an optimizer
+        hook. Note that in some complicated cases or models, the whole process
+        including back propagation and optimizer updating is also defined in
+        this method, such as GAN.
+
+        Args:
+            data (dict): The output of dataloader.
+            optimizer (:obj:`torch.optim.Optimizer` | dict): The optimizer of
+                runner is passed to ``train_step()``. This argument is unused
+                and reserved.
+
+        Returns:
+            dict: It should contain at least 3 keys: ``loss``, ``log_vars``,
+                ``num_samples``.
+                ``loss`` is a tensor for back propagation, which can be a
+                weighted sum of multiple losses.
+                ``log_vars`` contains all the variables to be sent to the
+                logger.
+                ``num_samples`` indicates the batch size (when the model is
+                DDP, it means the batch size on each GPU), which is used for
+                averaging the logs.
+        """
+        losses, states = self(**data_batch)
+        loss, log_vars = self._parse_losses(losses)
+        states.update({'img': data_batch['img'],
+                       'gt': data_batch['gt_semantic_seg']})
+
+        outputs = dict(
+            loss=loss,
+            log_vars=log_vars,
+            num_samples=len(data_batch['img_metas']),
+            states=states)
+
+        return outputs
 
     def forward_train(self, img, img_metas, gt_semantic_seg):
         """Forward function for training.
@@ -140,17 +183,20 @@ class EncoderDecoder(BaseSegmentor):
         x = self.extract_feat(img)
 
         losses = dict()
+        states = dict()
 
-        loss_decode = self._decode_head_forward_train(x, img_metas,
-                                                      gt_semantic_seg)
+        loss_decode, state_decode = self._decode_head_forward_train(x, img_metas,
+                                                                    gt_semantic_seg)
         losses.update(loss_decode)
+        states.update(state_decode)
 
         if self.with_auxiliary_head:
-            loss_aux = self._auxiliary_head_forward_train(
+            loss_aux, state_aux = self._auxiliary_head_forward_train(
                 x, img_metas, gt_semantic_seg)
             losses.update(loss_aux)
+            states.update(state_aux)
 
-        return losses
+        return losses, states
 
     # TODO refactor
     def slide_inference(self, img, img_meta, rescale):

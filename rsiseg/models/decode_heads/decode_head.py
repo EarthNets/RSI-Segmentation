@@ -4,6 +4,7 @@ from abc import ABCMeta, abstractmethod
 import torch
 import torch.nn as nn
 from mmcv.runner import BaseModule, auto_fp16, force_fp32
+import pdb
 
 from rsiseg.core import build_pixel_sampler
 from rsiseg.ops import resize
@@ -202,8 +203,11 @@ class BaseDecodeHead(BaseModule, metaclass=ABCMeta):
         """
         seg_logits = self.forward(inputs)
         gt_semantic_seg = gt_semantic_seg.type(torch.LongTensor).cuda()
+
         losses = self.losses(seg_logits, gt_semantic_seg)
-        return losses
+
+        state = {'seg_logits': seg_logits.detach()}
+        return losses, state
 
     def forward_test(self, inputs, img_metas, test_cfg):
         """Forward function for testing.
@@ -242,6 +246,7 @@ class BaseDecodeHead(BaseModule, metaclass=ABCMeta):
             seg_weight = self.sampler.sample(seg_logit, seg_label)
         else:
             seg_weight = None
+
         seg_label = seg_label.squeeze(1)
 
         if not isinstance(self.loss_decode, nn.ModuleList):

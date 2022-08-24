@@ -6,6 +6,7 @@ import torch.distributed as dist
 from mmcv.runner import DistEvalHook as _DistEvalHook
 from mmcv.runner import EvalHook as _EvalHook
 from torch.nn.modules.batchnorm import _BatchNorm
+import pdb
 
 
 class EvalHook(_EvalHook):
@@ -33,6 +34,7 @@ class EvalHook(_EvalHook):
                  **kwargs):
         super().__init__(*args, by_epoch=by_epoch, **kwargs)
         self.pre_eval = pre_eval
+        self.latest_results = None
         if efficient_test:
             warnings.warn(
                 'DeprecationWarning: ``efficient_test`` for evaluation hook '
@@ -48,6 +50,7 @@ class EvalHook(_EvalHook):
         from rsiseg.apis import single_gpu_test
         results = single_gpu_test(
             runner.model, self.dataloader, show=False, pre_eval=self.pre_eval)
+        self.latest_results = results
         runner.log_buffer.clear()
         runner.log_buffer.output['eval_iter_num'] = len(self.dataloader)
         key_score = self.evaluate(runner, results)

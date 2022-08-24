@@ -2,6 +2,7 @@
 import os.path as osp
 import warnings
 from collections import OrderedDict
+import pdb
 
 import mmcv
 import numpy as np
@@ -38,7 +39,7 @@ class EODataset(Dataset):
         self.ignore_index = ignore_index
         self.reduce_zero_label = reduce_zero_label
         self.label_map = None
-        gt_seg_map_loader_cfg = dict(imdecode_backend='h5py')
+        # gt_seg_map_loader_cfg = dict(imdecode_backend='h5py')
         self.gt_seg_map_loader = LoadAnnotations(
         ) if gt_seg_map_loader_cfg is None else LoadAnnotations(
             **gt_seg_map_loader_cfg)

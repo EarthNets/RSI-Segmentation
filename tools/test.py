@@ -5,6 +5,7 @@ import os.path as osp
 import shutil
 import time
 import warnings
+import pdb
 
 import mmcv
 import torch
@@ -14,11 +15,11 @@ from mmcv.runner import (get_dist_info, init_dist, load_checkpoint,
                          wrap_fp16_model)
 from mmcv.utils import DictAction
 
-from mmseg import digit_version
-from mmseg.apis import multi_gpu_test, single_gpu_test
-from mmseg.datasets import build_dataloader, build_dataset
-from mmseg.models import build_segmentor
-from mmseg.utils import setup_multi_processes
+from rsiseg import digit_version
+from rsiseg.apis import multi_gpu_test, single_gpu_test
+from rsiseg.datasets import build_dataloader, build_dataset
+from rsiseg.models import build_segmentor
+from rsiseg.utils import setup_multi_processes
 
 
 def parse_args():
@@ -250,6 +251,8 @@ def main():
         assert len(args.eval) == 1, 'eval on format results is not ' \
                                     'applicable for metrics other than ' \
                                     'cityscapes'
+
+    pdb.set_trace()
     if args.format_only or eval_on_format_results:
         if 'imgfile_prefix' in eval_kwargs:
             tmpdir = eval_kwargs['imgfile_prefix']
