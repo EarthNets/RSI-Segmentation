@@ -1,12 +1,16 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import warnings
+import pdb
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.autograd import Variable
+from typing import Optional, List
 
 from ..builder import LOSSES
 from .utils import get_class_weight, weight_reduce_loss
+BINARY_MODE, MULTICLASS_MODE, MULTILABEL_MODE = 'binary', 'multiclass', 'multilabel'
 
 
 def cross_entropy(pred,
@@ -15,7 +19,7 @@ def cross_entropy(pred,
                   class_weight=None,
                   reduction='mean',
                   avg_factor=None,
-                  ignore_index=-100,
+                  ignore_index=255,
                   avg_non_ignore=False):
     """cross_entropy. The wrapper function for :func:`F.cross_entropy`
 
@@ -86,13 +90,51 @@ def _expand_onehot_labels(labels, label_weights, target_shape, ignore_index):
     return bin_labels, bin_label_weights, valid_mask
 
 
+def soft_jaccard_score(
+    output: torch.Tensor,
+    target: torch.Tensor,
+    smooth: float = 0.0,
+    eps: float = 1e-7,
+    dims=None,
+) -> torch.Tensor:
+    assert output.size() == target.size()
+    if dims is not None:
+        intersection = torch.sum(output * target, dim=dims)
+        cardinality = torch.sum(output + target, dim=dims)
+    else:
+        intersection = torch.sum(output * target)
+        cardinality = torch.sum(output + target)
+
+    union = cardinality - intersection
+    jaccard_score = (intersection + smooth) / (union + smooth).clamp_min(eps)
+    return jaccard_score
+
+
+def to_tensor(x, dtype=None) -> torch.Tensor:
+    if isinstance(x, torch.Tensor):
+        if dtype is not None:
+            x = x.type(dtype)
+        return x
+    if isinstance(x, np.ndarray):
+        x = torch.from_numpy(x)
+        if dtype is not None:
+            x = x.type(dtype)
+        return x
+    if isinstance(x, (list, tuple)):
+        x = np.array(x)
+        x = torch.from_numpy(x)
+        if dtype is not None:
+            x = x.type(dtype)
+        return x
+
+
 def binary_cross_entropy(pred,
                          label,
                          weight=None,
                          reduction='mean',
                          avg_factor=None,
                          class_weight=None,
-                         ignore_index=-100,
+                         ignore_index=255,
                          avg_non_ignore=False,
                          **kwargs):
     """Calculate the binary CrossEntropy loss.
@@ -124,7 +166,7 @@ def binary_cross_entropy(pred,
         assert label[label != ignore_index].max() <= 1, \
             'For pred with shape [N, 1, H, W], its label must have at ' \
             'most 2 classes'
-        pred = pred.squeeze(1)
+        pred = pred.squeeze()
     if pred.dim() != label.dim():
         assert (pred.dim() == 2 and label.dim() == 1) or (
                 pred.dim() == 4 and label.dim() == 3), \
@@ -193,6 +235,92 @@ def mask_cross_entropy(pred,
         pred_slice, target, weight=class_weight, reduction='mean')[None]
 
 
+
+@LOSSES.register_module()
+class JaccardLoss(nn.Module):
+    def __init__(
+        self,
+        mode: str,
+        classes: Optional[List[int]] = None,
+        log_loss: bool = False,
+        from_logits: bool = True,
+        smooth: float = 0.0,
+        eps: float = 1e-7,
+    ):
+        """Jaccard loss for image segmentation task.
+        It supports binary, multiclass and multilabel cases
+        Args:
+            mode: Loss mode 'binary', 'multiclass' or 'multilabel'
+            classes:  List of classes that contribute in loss computation. By default, all channels are included.
+            log_loss: If True, loss computed as `- log(jaccard_coeff)`, otherwise `1 - jaccard_coeff`
+            from_logits: If True, assumes input is raw logits
+            smooth: Smoothness constant for dice coefficient
+            eps: A small epsilon for numerical stability to avoid zero division error
+                (denominator will be always greater or equal to eps)
+        Shape
+             - **y_pred** - torch.Tensor of shape (N, C, H, W)
+             - **y_true** - torch.Tensor of shape (N, H, W) or (N, C, H, W)
+        Reference
+            https://github.com/BloodAxe/pytorch-toolbelt
+        """
+        assert mode in {'binary', 'multiclass', 'multilabel'}
+        super(JaccardLoss, self).__init__()
+
+        self.mode = mode
+        if classes is not None:
+            assert mode != BINARY_MODE, "Masking classes is not supported with mode=binary"
+            classes = to_tensor(classes, dtype=torch.long)
+
+        self.classes = classes
+        self.from_logits = from_logits
+        self.smooth = smooth
+        self.eps = eps
+        self.log_loss = log_loss
+
+    def forward(self, y_pred: torch.Tensor, y_true: torch.Tensor) -> torch.Tensor:
+        assert y_true.size(0) == y_pred.size(0)
+        if self.from_logits:
+            # Apply activations to get [0..1] class probabilities
+            # Using Log-Exp as this gives more numerically stable result and does not cause vanishing gradient on
+            # extreme values 0 and 1
+            if self.mode == MULTICLASS_MODE:
+                y_pred = y_pred.log_softmax(dim=1).exp()
+            else:
+                y_pred = F.logsigmoid(y_pred).exp()
+        bs = y_true.size(0)
+        num_classes = y_pred.size(1)
+        dims = (0, 2)
+        if self.mode == BINARY_MODE:
+            y_true = y_true.view(bs, 1, -1)
+            y_pred = y_pred.view(bs, 1, -1)
+        if self.mode == MULTICLASS_MODE:
+            y_true = y_true.view(bs, -1)
+            y_pred = y_pred.view(bs, num_classes, -1)
+            y_true = F.one_hot(y_true, num_classes)  # N,H*W -> N,H*W, C
+            y_true = y_true.permute(0, 2, 1)  # H, C, H*W
+        if self.mode == MULTILABEL_MODE:
+            y_true = y_true.view(bs, num_classes, -1)
+            y_pred = y_pred.view(bs, num_classes, -1)
+        scores = soft_jaccard_score(
+            y_pred,
+            y_true.type(y_pred.dtype),
+            smooth=self.smooth,
+            eps=self.eps,
+            dims=dims,
+        )
+        if self.log_loss:
+            loss = -torch.log(scores.clamp_min(self.eps))
+        else:
+            loss = 1.0 - scores
+        mask = y_true.sum(dims) > 0
+        loss *= mask.float()
+
+        if self.classes is not None:
+            loss = loss[self.classes]
+
+        return loss.mean()
+
+
 @LOSSES.register_module()
 class CrossEntropyLoss(nn.Module):
     """CrossEntropyLoss.
@@ -245,6 +373,7 @@ class CrossEntropyLoss(nn.Module):
         else:
             self.cls_criterion = cross_entropy
         self._loss_name = loss_name
+        self._jloss = JaccardLoss('multiclass')
 
     def extra_repr(self):
         """Extra repr."""
@@ -257,7 +386,7 @@ class CrossEntropyLoss(nn.Module):
                 weight=None,
                 avg_factor=None,
                 reduction_override=None,
-                ignore_index=-100,
+                ignore_index=255,
                 **kwargs):
         """Forward function."""
         assert reduction_override in (None, 'none', 'mean', 'sum')
@@ -268,6 +397,7 @@ class CrossEntropyLoss(nn.Module):
         else:
             class_weight = None
         # Note: for BCE loss, label < 0 is invalid.
+        pdb.set_trace()
         loss_cls = self.loss_weight * self.cls_criterion(
             cls_score,
             label,
@@ -278,6 +408,8 @@ class CrossEntropyLoss(nn.Module):
             avg_non_ignore=self.avg_non_ignore,
             ignore_index=ignore_index,
             **kwargs)
+        jloss = self._jloss(cls_score.clone(), label.clone())
+        loss_cls = loss_cls + 0.8 * jloss
         return loss_cls
 
     @property
