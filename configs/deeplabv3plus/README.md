@@ -79,3 +79,4 @@ Note:
 - `MG-124` stands for multi-grid dilation in the last stage of ResNet.
 - `FP16` means Mixed Precision (FP16) is adopted in training.
 - `896x896` is the Crop Size of iSAID dataset, which is followed by the implementation of [PointFlow: Flowing Semantics Through Points for Aerial Image Segmentation](https://arxiv.org/pdf/2103.06564.pdf)
+- The results on LoveDA dataset are reported on the validation set. One can submit their results to the official website according to the instructions on https://github.com/Junjue-Wang/LoveDA.
