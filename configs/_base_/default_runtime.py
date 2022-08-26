@@ -10,7 +10,7 @@ log_config = dict(
         dict(type='TensorboardLoggerHook'),
         dict(type='MMSegWandbHook',
              init_kwargs={'project': 'rsi_segmentation'},
-             interval=49,
+             interval=201,
              num_eval_images=10)
     ])
 # yapf:enable

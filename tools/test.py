@@ -252,7 +252,6 @@ def main():
                                     'applicable for metrics other than ' \
                                     'cityscapes'
 
-    pdb.set_trace()
     if args.format_only or eval_on_format_results:
         if 'imgfile_prefix' in eval_kwargs:
             tmpdir = eval_kwargs['imgfile_prefix']

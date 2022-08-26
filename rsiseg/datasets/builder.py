@@ -71,8 +71,9 @@ def build_dataset(cfg, default_args=None):
                                    RepeatDataset)
     if isinstance(cfg, (list, tuple)):
         dataset = ConcatDataset([build_dataset(c, default_args) for c in cfg])
-    elif isinstance(cfg.get('img_dir'), (list, tuple)) or isinstance(
-            cfg.get('split', None), (list, tuple)):
+    # elif isinstance(cfg.get('img_dir'), (list, tuple)) or isinstance(
+    #         cfg.get('split', None), (list, tuple)):
+    elif isinstance(cfg.get('img_dir'), (list, tuple)):
         dataset = _concat_dataset(cfg, default_args)
     else:
         dataset = build_from_cfg(cfg, DATASETS, default_args)
