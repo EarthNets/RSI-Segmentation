@@ -1,4 +1,4 @@
-Welcome to MMSegmentation's documentation!
+Welcome to RSI-Segmentation's documentation!
 =======================================
 
 .. toctree::

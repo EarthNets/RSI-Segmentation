@@ -111,8 +111,8 @@ html_theme_options = {
         },
     ],
     # Specify the language of shared menu
-    #'menu_lang':
-    #'en'
+    'menu_lang':
+    'en'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
