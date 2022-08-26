@@ -91,16 +91,16 @@ html_theme_options = {
             'name':
             'Tutorial',
             'url':
-            'https://github.com/open-mmlab/mmsegmentation/blob/master/'
+            'https://github.com/EarthNets/RSI-Segmentation/blob/main/'
             'demo/MMSegmentation_Tutorial.ipynb'
         },
         {
             'name': 'GitHub',
-            'url': 'https://github.com/open-mmlab/mmsegmentation'
+            'url': 'https://github.com/EarthNets/RSI-Segmentation'
         },
         {
             'name':
-            'Upstream',
+            'About',
             'children': [
                 {
                     'name': 'MMCV',
@@ -111,8 +111,8 @@ html_theme_options = {
         },
     ],
     # Specify the language of shared menu
-    'menu_lang':
-    'en'
+    #'menu_lang':
+    #'en'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
