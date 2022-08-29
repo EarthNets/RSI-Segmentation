@@ -9,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -348,7 +348,7 @@ Here is an example for cityscapes dataset.</p>
 <span class="n">model</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
     <span class="n">decode_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="n">loss_decode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
             <span class="c1"># DeepLab used this class weight for cityscapes</span>
             <span class="n">class_weight</span><span class="o">=</span><span class="p">[</span><span class="mf">0.8373</span><span class="p">,</span> <span class="mf">0.9180</span><span class="p">,</span> <span class="mf">0.8660</span><span class="p">,</span> <span class="mf">1.0345</span><span class="p">,</span> <span class="mf">1.0166</span><span class="p">,</span> <span class="mf">0.9969</span><span class="p">,</span> <span class="mf">0.9754</span><span class="p">,</span>
                         <span class="mf">1.0489</span><span class="p">,</span> <span class="mf">0.8786</span><span class="p">,</span> <span class="mf">1.0023</span><span class="p">,</span> <span class="mf">0.9539</span><span class="p">,</span> <span class="mf">0.9843</span><span class="p">,</span> <span class="mf">1.1116</span><span class="p">,</span> <span class="mf">0.9037</span><span class="p">,</span>
@@ -381,11 +381,11 @@ Here is an example for cityscapes dataset.</p>
     <span class="n">decode_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="n">ignore_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">loss_decode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">avg_non_ignore</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">avg_non_ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="n">auxiliary_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="n">ignore_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">loss_decode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">avg_non_ignore</span><span class="o">=</span><span class="bp">True</span><span class="p">)),</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">avg_non_ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
     <span class="p">))</span>
 </pre></div>
 </div>

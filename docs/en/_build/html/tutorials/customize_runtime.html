@@ -9,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -337,7 +337,7 @@ And then implement the new optimizer in a file, e.g., in <code class="docutils l
 <span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">Optimizer</span>
 
 
-<span class="nd">@OPTIMIZERS.register_module</span><span class="p">()</span>
+<span class="nd">@OPTIMIZERS</span><span class="o">.</span><span class="n">register_module</span><span class="p">()</span>
 <span class="k">class</span> <span class="nc">MyOptimizer</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
@@ -360,7 +360,7 @@ find the new module and add it:</p>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">custom_imports</span></code> in the config to manually import it</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">custom_imports</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">imports</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mmseg.core.optimizer.my_optimizer&#39;</span><span class="p">],</span> <span class="n">allow_failed_imports</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">custom_imports</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">imports</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mmseg.core.optimizer.my_optimizer&#39;</span><span class="p">],</span> <span class="n">allow_failed_imports</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The module <code class="docutils literal notranslate"><span class="pre">mmseg.core.optimizer.my_optimizer</span></code> will be imported at the beginning of the program and the class <code class="docutils literal notranslate"><span class="pre">MyOptimizer</span></code> is then automatically registered.
@@ -392,10 +392,10 @@ The users can do those fine-grained parameter tuning through customizing optimiz
 <span class="kn">from</span> <span class="nn">.my_optimizer</span> <span class="kn">import</span> <span class="n">MyOptimizer</span>
 
 
-<span class="nd">@OPTIMIZER_BUILDERS.register_module</span><span class="p">()</span>
+<span class="nd">@OPTIMIZER_BUILDERS</span><span class="o">.</span><span class="n">register_module</span><span class="p">()</span>
 <span class="k">class</span> <span class="nc">MyOptimizerConstructor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optimizer_cfg</span><span class="p">,</span> <span class="n">paramwise_cfg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optimizer_cfg</span><span class="p">,</span> <span class="n">paramwise_cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
 
@@ -412,7 +412,7 @@ The users can do those fine-grained parameter tuning through customizing optimiz
 <li><p><strong>Use gradient clip to stabilize training</strong>:
 Some models need gradient clip to clip the gradients to stabilize the training process. An example is as below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">_delete_</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">grad_clip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">max_norm</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">norm_type</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">_delete_</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grad_clip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">max_norm</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">norm_type</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>If your config inherits the base config which already sets the <code class="docutils literal notranslate"><span class="pre">optimizer_config</span></code>, you might need <code class="docutils literal notranslate"><span class="pre">_delete_=True</span></code> to override the unnecessary settings. See the <a class="reference external" href="https://mmsegmentation.readthedocs.io/en/latest/config.html">config documentation</a> for more details.</p>

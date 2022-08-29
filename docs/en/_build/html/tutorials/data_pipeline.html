@@ -9,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -329,7 +329,7 @@ A pipeline consists of a sequence of operations. Each operation takes a dict as 
 <p>The operations are categorized into data loading, pre-processing, formatting and test-time augmentation.</p>
 <p>Here is an pipeline example for PSPNet.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img_norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span> <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span> <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">crop_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 <span class="n">train_pipeline</span> <span class="o">=</span> <span class="p">[</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;LoadImageFromFile&#39;</span><span class="p">),</span>
@@ -349,9 +349,9 @@ A pipeline consists of a sequence of operations. Each operation takes a dict as 
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MultiScaleFlipAug&#39;</span><span class="p">,</span>
         <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
         <span class="c1"># img_ratios=[0.5, 0.75, 1.0, 1.25, 1.5, 1.75],</span>
-        <span class="n">flip</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">transforms</span><span class="o">=</span><span class="p">[</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomFlip&#39;</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">img_norm_cfg</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ImageToTensor&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]),</span>
@@ -446,11 +446,11 @@ A pipeline consists of a sequence of operations. Each operation takes a dict as 
 <li><p>Write a new pipeline in any file, e.g., <code class="docutils literal notranslate"><span class="pre">my_pipeline.py</span></code>. It takes a dict as input and return a dict.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmseg.datasets</span> <span class="kn">import</span> <span class="n">PIPELINES</span>
 
-<span class="nd">@PIPELINES.register_module</span><span class="p">()</span>
+<span class="nd">@PIPELINES</span><span class="o">.</span><span class="n">register_module</span><span class="p">()</span>
 <span class="k">class</span> <span class="nc">MyTransform</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;dummy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;dummy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">results</span>
 </pre></div>
 </div>
@@ -462,7 +462,7 @@ A pipeline consists of a sequence of operations. Each operation takes a dict as 
 </li>
 <li><p>Use it in config files.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img_norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span> <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span> <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">crop_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 <span class="n">train_pipeline</span> <span class="o">=</span> <span class="p">[</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;LoadImageFromFile&#39;</span><span class="p">),</span>

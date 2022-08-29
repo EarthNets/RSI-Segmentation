@@ -9,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -322,7 +322,7 @@ You need to first implement the new optimizer in a file, e.g., in <code class="d
 <span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">Optimizer</span>
 
 
-<span class="nd">@OPTIMIZERS.register_module</span>
+<span class="nd">@OPTIMIZERS</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">MyOptimizer</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
@@ -354,18 +354,18 @@ For example, if you want to use <code class="docutils literal notranslate"><span
 <h2>Customize optimizer constructor<a class="headerlink" href="#customize-optimizer-constructor" title="Permalink to this heading">¶</a></h2>
 <p>Some models may have some parameter-specific settings for optimization, e.g. weight decay for BatchNoarm layers.
 The users can do those fine-grained parameter tuning through customizing optimizer constructor.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmcv.utils</span> <span class="k">import</span> <span class="n">build_from_cfg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmcv.utils</span> <span class="kn">import</span> <span class="n">build_from_cfg</span>
 
-<span class="kn">from</span> <span class="nn">mmcv.runner</span> <span class="k">import</span> <span class="n">OPTIMIZER_BUILDERS</span>
-<span class="kn">from</span> <span class="nn">.cocktail_optimizer</span> <span class="k">import</span> <span class="n">CocktailOptimizer</span>
+<span class="kn">from</span> <span class="nn">mmcv.runner</span> <span class="kn">import</span> <span class="n">OPTIMIZER_BUILDERS</span>
+<span class="kn">from</span> <span class="nn">.cocktail_optimizer</span> <span class="kn">import</span> <span class="n">CocktailOptimizer</span>
 
 
 <span class="nd">@OPTIMIZER_BUILDERS</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">CocktailOptimizerConstructor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optimizer_cfg</span><span class="p">,</span> <span class="n">paramwise_cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optimizer_cfg</span><span class="p">,</span> <span class="n">paramwise_cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">my_optimizer</span>
 
@@ -385,12 +385,12 @@ The users can do those fine-grained parameter tuning through customizing optimiz
 <ol class="arabic simple">
 <li><p>Create a new file <code class="docutils literal notranslate"><span class="pre">mmseg/models/backbones/mobilenet.py</span></code>.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
 <span class="kn">from</span> <span class="nn">..registry</span> <span class="kn">import</span> <span class="n">BACKBONES</span>
 
 
-<span class="nd">@BACKBONES.register_module</span>
+<span class="nd">@BACKBONES</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">MobileNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
@@ -399,7 +399,7 @@ The users can do those fine-grained parameter tuning through customizing optimiz
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>  <span class="c1"># should return a tuple</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="nf">init_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">init_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
 </div>
@@ -430,7 +430,7 @@ Here we show how to develop a new head with the example of <a class="reference e
 <p>First, add a new decode head in <code class="docutils literal notranslate"><span class="pre">mmseg/models/decode_heads/psp_head.py</span></code>.
 PSPNet implements a decode head for segmentation decode.
 To implement a decode head, basically we need to implement three functions of the new module as the following.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@HEADS.register_module</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@HEADS</span><span class="o">.</span><span class="n">register_module</span><span class="p">()</span>
 <span class="k">class</span> <span class="nc">PSPHead</span><span class="p">(</span><span class="n">BaseDecodeHead</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_scales</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -444,7 +444,7 @@ To implement a decode head, basically we need to implement three functions of th
 </div>
 <p>Next, the users need to add the module in the <code class="docutils literal notranslate"><span class="pre">mmseg/models/decode_heads/__init__.py</span></code> thus the corresponding registry could find and load them.</p>
 <p>To config file of PSPNet is as the following</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;EncoderDecoder&#39;</span><span class="p">,</span>
     <span class="n">pretrained</span><span class="o">=</span><span class="s1">&#39;pretrain_model/resnet50_v1c_trick-2cccc1ad.pth&#39;</span><span class="p">,</span>
@@ -456,9 +456,9 @@ To implement a decode head, basically we need to implement three functions of th
         <span class="n">dilations</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
         <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="n">norm_cfg</span><span class="o">=</span><span class="n">norm_cfg</span><span class="p">,</span>
-        <span class="n">norm_eval</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">norm_eval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">style</span><span class="o">=</span><span class="s1">&#39;pytorch&#39;</span><span class="p">,</span>
-        <span class="n">contract_dilation</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">contract_dilation</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="n">decode_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;PSPHead&#39;</span><span class="p">,</span>
         <span class="n">in_channels</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
@@ -468,9 +468,9 @@ To implement a decode head, basically we need to implement three functions of th
         <span class="n">dropout_ratio</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
         <span class="n">num_classes</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span>
         <span class="n">norm_cfg</span><span class="o">=</span><span class="n">norm_cfg</span><span class="p">,</span>
-        <span class="n">align_corners</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">loss_decode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)))</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span> <span class="n">use_sigmoid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)))</span>
 
 </pre></div>
 </div>
@@ -481,7 +481,7 @@ To implement a decode head, basically we need to implement three functions of th
 To add a new loss function, the users need implement it in <code class="docutils literal notranslate"><span class="pre">mmseg/models/losses/my_loss.py</span></code>.
 The decorator <code class="docutils literal notranslate"><span class="pre">weighted_loss</span></code> enable the loss to be weighted for each element.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
 <span class="kn">from</span> <span class="nn">..builder</span> <span class="kn">import</span> <span class="n">LOSSES</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">weighted_loss</span>
@@ -492,7 +492,7 @@ The decorator <code class="docutils literal notranslate"><span class="pre">weigh
     <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pred</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">loss</span>
 
-<span class="nd">@LOSSES.register_module</span>
+<span class="nd">@LOSSES</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">MyLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
@@ -503,10 +503,10 @@ The decorator <code class="docutils literal notranslate"><span class="pre">weigh
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                 <span class="n">pred</span><span class="p">,</span>
                 <span class="n">target</span><span class="p">,</span>
-                <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                <span class="n">avg_factor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                <span class="n">reduction_override</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="n">reduction_override</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+                <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">avg_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">reduction_override</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">reduction_override</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">)</span>
         <span class="n">reduction</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">reduction_override</span> <span class="k">if</span> <span class="n">reduction_override</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="p">)</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_weight</span> <span class="o">*</span> <span class="n">my_loss</span><span class="p">(</span>

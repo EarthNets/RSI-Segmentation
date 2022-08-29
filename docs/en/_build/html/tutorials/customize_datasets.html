@@ -9,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -483,7 +483,7 @@ like mosaic and mixup.</p>
 <p>An example of using <code class="docutils literal notranslate"><span class="pre">MultiImageMixDataset</span></code> with <code class="docutils literal notranslate"><span class="pre">Mosaic</span></code> data augmentation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_pipeline</span> <span class="o">=</span> <span class="p">[</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomMosaic&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomFlip&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">img_norm_cfg</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;DefaultFormatBundle&#39;</span><span class="p">),</span>
@@ -496,7 +496,7 @@ like mosaic and mixup.</p>
         <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
         <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="n">dataset_type</span><span class="p">,</span>
-        <span class="n">reduce_zero_label</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">reduce_zero_label</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">img_dir</span><span class="o">=</span><span class="n">data_root</span> <span class="o">+</span> <span class="s2">&quot;images/train&quot;</span><span class="p">,</span>
         <span class="n">ann_dir</span><span class="o">=</span><span class="n">data_root</span> <span class="o">+</span> <span class="s2">&quot;annotations/train&quot;</span><span class="p">,</span>
         <span class="n">pipeline</span><span class="o">=</span><span class="p">[</span>

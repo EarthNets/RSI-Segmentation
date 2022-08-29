@@ -9,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -349,7 +349,7 @@ For example, if some modification is made base on DeepLabV3, user may first inhe
 <p>To help the users have a basic idea of a complete config and the modules in a modern semantic segmentation system,
 we make brief comments on the config of PSPNet using ResNet50V1c as the following.
 For more detailed usage and the corresponding alternative for each module, please refer to the API documentation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># Segmentation usually uses SyncBN</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Segmentation usually uses SyncBN</span>
 <span class="n">model</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;EncoderDecoder&#39;</span><span class="p">,</span>  <span class="c1"># Name of segmentor</span>
     <span class="n">pretrained</span><span class="o">=</span><span class="s1">&#39;open-mmlab://resnet50_v1c&#39;</span><span class="p">,</span>  <span class="c1"># The ImageNet pretrained backbone to be loaded</span>
@@ -362,10 +362,10 @@ For more detailed usage and the corresponding alternative for each module, pleas
         <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># The stride of each layer.</span>
         <span class="n">norm_cfg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>  <span class="c1"># The configuration of norm layer.</span>
             <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span>  <span class="c1"># Type of norm layer. Usually it is SyncBN.</span>
-            <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>   <span class="c1"># Whether to train the gamma and beta in norm</span>
-        <span class="n">norm_eval</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># Whether to freeze the statistics in BN</span>
+            <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>   <span class="c1"># Whether to train the gamma and beta in norm</span>
+        <span class="n">norm_eval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Whether to freeze the statistics in BN</span>
         <span class="n">style</span><span class="o">=</span><span class="s1">&#39;pytorch&#39;</span><span class="p">,</span>  <span class="c1"># The style of backbone, &#39;pytorch&#39; means that stride 2 layers are in 3x3 conv, &#39;caffe&#39; means stride 2 layers are in 1x1 convs.</span>
-        <span class="n">contract_dilation</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>  <span class="c1"># When dilation &gt; 1, whether contract first layer of dilation.</span>
+        <span class="n">contract_dilation</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># When dilation &gt; 1, whether contract first layer of dilation.</span>
     <span class="n">decode_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;PSPHead&#39;</span><span class="p">,</span>  <span class="c1"># Type of decode head. Please refer to mmseg/models/decode_heads for available options.</span>
         <span class="n">in_channels</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>  <span class="c1"># Input channel of decode head.</span>
@@ -374,11 +374,11 @@ For more detailed usage and the corresponding alternative for each module, pleas
         <span class="n">pool_scales</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>  <span class="c1"># The avg pooling scales of PSPHead. Please refer to paper for details.</span>
         <span class="n">dropout_ratio</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># The dropout ratio before final classification layer.</span>
         <span class="n">num_classes</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span>  <span class="c1"># Number of segmentation class. Usually 19 for cityscapes, 21 for VOC, 150 for ADE20k.</span>
-        <span class="n">norm_cfg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>  <span class="c1"># The configuration of norm layer.</span>
-        <span class="n">align_corners</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># The align_corners argument for resize in decoding.</span>
+        <span class="n">norm_cfg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># The configuration of norm layer.</span>
+        <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># The align_corners argument for resize in decoding.</span>
         <span class="n">loss_decode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>  <span class="c1"># Config of loss function for the decode_head.</span>
             <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span>  <span class="c1"># Type of loss used for segmentation.</span>
-            <span class="n">use_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># Whether use sigmoid activation for segmentation.</span>
+            <span class="n">use_sigmoid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Whether use sigmoid activation for segmentation.</span>
             <span class="n">loss_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)),</span>  <span class="c1"># Loss weight of decode head.</span>
     <span class="n">auxiliary_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;FCNHead&#39;</span><span class="p">,</span>  <span class="c1"># Type of auxiliary head. Please refer to mmseg/models/decode_heads for available options.</span>
@@ -386,14 +386,14 @@ For more detailed usage and the corresponding alternative for each module, pleas
         <span class="n">in_index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># The index of feature map to select.</span>
         <span class="n">channels</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>  <span class="c1"># The intermediate channels of decode head.</span>
         <span class="n">num_convs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Number of convs in FCNHead. It is usually 1 in auxiliary head.</span>
-        <span class="n">concat_input</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># Whether concat output of convs with input before classification layer.</span>
+        <span class="n">concat_input</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Whether concat output of convs with input before classification layer.</span>
         <span class="n">dropout_ratio</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># The dropout ratio before final classification layer.</span>
         <span class="n">num_classes</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span>  <span class="c1"># Number of segmentation class. Usually 19 for cityscapes, 21 for VOC, 150 for ADE20k.</span>
-        <span class="n">norm_cfg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>  <span class="c1"># The configuration of norm layer.</span>
-        <span class="n">align_corners</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># The align_corners argument for resize in decoding.</span>
+        <span class="n">norm_cfg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># The configuration of norm layer.</span>
+        <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># The align_corners argument for resize in decoding.</span>
         <span class="n">loss_decode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>  <span class="c1"># Config of loss function for the decode_head.</span>
             <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;CrossEntropyLoss&#39;</span><span class="p">,</span>  <span class="c1"># Type of loss used for segmentation.</span>
-            <span class="n">use_sigmoid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># Whether use sigmoid activation for segmentation.</span>
+            <span class="n">use_sigmoid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Whether use sigmoid activation for segmentation.</span>
             <span class="n">loss_weight</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)))</span>  <span class="c1"># Loss weight of auxiliary head, which is usually 0.4 of decode head.</span>
 <span class="n">train_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># train_cfg is just a place holder for now.</span>
 <span class="n">test_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;whole&#39;</span><span class="p">)</span>  <span class="c1"># The test mode, options are &#39;whole&#39; and &#39;sliding&#39;. &#39;whole&#39;: whole image fully-convolutional test. &#39;sliding&#39;: sliding crop window on the image.</span>
@@ -402,7 +402,7 @@ For more detailed usage and the corresponding alternative for each module, pleas
 <span class="n">img_norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>  <span class="c1"># Image normalization config to normalize the input images.</span>
     <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span>  <span class="c1"># Mean values used to pre-training the pre-trained backbone models.</span>
     <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span>  <span class="c1"># Standard variance used to pre-training the pre-trained backbone models.</span>
-    <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># The channel orders of image used to pre-training the pre-trained backbone models.</span>
+    <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># The channel orders of image used to pre-training the pre-trained backbone models.</span>
 <span class="n">crop_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>  <span class="c1"># The crop size during training.</span>
 <span class="n">train_pipeline</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># Training pipeline.</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;LoadImageFromFile&#39;</span><span class="p">),</span>  <span class="c1"># First pipeline to load images from file path.</span>
@@ -421,7 +421,7 @@ For more detailed usage and the corresponding alternative for each module, pleas
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span>  <span class="c1"># Augmentation pipeline that normalize the input images</span>
         <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span>  <span class="c1"># These keys are the same of img_norm_cfg since the</span>
         <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span>  <span class="c1"># keys of img_norm_cfg are used here as arguments</span>
-        <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Pad&#39;</span><span class="p">,</span>  <span class="c1"># Augmentation pipeline that pad the image to specified size.</span>
         <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>  <span class="c1"># The output size of padding.</span>
         <span class="n">pad_val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># The padding value for image.</span>
@@ -435,16 +435,16 @@ For more detailed usage and the corresponding alternative for each module, pleas
     <span class="nb">dict</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MultiScaleFlipAug&#39;</span><span class="p">,</span>  <span class="c1"># An encapsulation that encapsulates the test time augmentations</span>
         <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>  <span class="c1"># Decides the largest scale for testing, used for the Resize pipeline</span>
-        <span class="n">flip</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># Whether to flip images during testing</span>
+        <span class="n">flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Whether to flip images during testing</span>
         <span class="n">transforms</span><span class="o">=</span><span class="p">[</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span>  <span class="c1"># Use resize augmentation</span>
-                 <span class="n">keep_ratio</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>  <span class="c1"># Whether to keep the ratio between height and width, the img_scale set here will be suppressed by the img_scale set above.</span>
+                 <span class="n">keep_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># Whether to keep the ratio between height and width, the img_scale set here will be suppressed by the img_scale set above.</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomFlip&#39;</span><span class="p">),</span>  <span class="c1"># Thought RandomFlip is added in pipeline, it is not used when flip=False</span>
             <span class="nb">dict</span><span class="p">(</span>
                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span>  <span class="c1"># Normalization config, the values are from img_norm_cfg</span>
                 <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span>
                 <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span>
-                <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ImageToTensor&#39;</span><span class="p">,</span> <span class="c1"># Convert image to tensor</span>
                 <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Collect&#39;</span><span class="p">,</span> <span class="c1"># Collect pipeline that collect necessary keys for testing.</span>
@@ -471,7 +471,7 @@ For more detailed usage and the corresponding alternative for each module, pleas
                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span>
                 <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span>
                 <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span>
-                <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Pad&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="n">pad_val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seg_pad_val</span><span class="o">=</span><span class="mi">255</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;DefaultFormatBundle&#39;</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Collect&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;gt_semantic_seg&#39;</span><span class="p">])</span>
@@ -486,15 +486,15 @@ For more detailed usage and the corresponding alternative for each module, pleas
             <span class="nb">dict</span><span class="p">(</span>
                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MultiScaleFlipAug&#39;</span><span class="p">,</span>
                 <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
-                <span class="n">flip</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">transforms</span><span class="o">=</span><span class="p">[</span>
-                    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
                     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomFlip&#39;</span><span class="p">),</span>
                     <span class="nb">dict</span><span class="p">(</span>
                         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span>
                         <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span>
                         <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span>
-                        <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                        <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
                     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ImageToTensor&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]),</span>
                     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Collect&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">])</span>
                 <span class="p">])</span>
@@ -509,15 +509,15 @@ For more detailed usage and the corresponding alternative for each module, pleas
             <span class="nb">dict</span><span class="p">(</span>
                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MultiScaleFlipAug&#39;</span><span class="p">,</span>
                 <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
-                <span class="n">flip</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">transforms</span><span class="o">=</span><span class="p">[</span>
-                    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
                     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomFlip&#39;</span><span class="p">),</span>
                     <span class="nb">dict</span><span class="p">(</span>
                         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span>
                         <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span>
                         <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span>
-                        <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                        <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
                     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ImageToTensor&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]),</span>
                     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Collect&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">])</span>
                 <span class="p">])</span>
@@ -526,14 +526,14 @@ For more detailed usage and the corresponding alternative for each module, pleas
     <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>  <span class="c1"># Interval to print the log</span>
     <span class="n">hooks</span><span class="o">=</span><span class="p">[</span>
         <span class="c1"># dict(type=&#39;TensorboardLoggerHook&#39;)  # The Tensorboard logger is also supported</span>
-        <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;TextLoggerHook&#39;</span><span class="p">,</span> <span class="n">by_epoch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;TextLoggerHook&#39;</span><span class="p">,</span> <span class="n">by_epoch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="p">])</span>
 <span class="n">dist_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;nccl&#39;</span><span class="p">)</span>  <span class="c1"># Parameters to setup distributed training, the port can also be set.</span>
 <span class="n">log_level</span> <span class="o">=</span> <span class="s1">&#39;INFO&#39;</span>  <span class="c1"># The level of logging.</span>
-<span class="n">load_from</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># load models as a pre-trained model from a given path. This will not resume training.</span>
-<span class="n">resume_from</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># Resume checkpoints from a given path, the training will be resumed from the iteration when the checkpoint&#39;s is saved.</span>
+<span class="n">load_from</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># load models as a pre-trained model from a given path. This will not resume training.</span>
+<span class="n">resume_from</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Resume checkpoints from a given path, the training will be resumed from the iteration when the checkpoint&#39;s is saved.</span>
 <span class="n">workflow</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># Workflow for runner. [(&#39;train&#39;, 1)] means there is only one workflow and the workflow named &#39;train&#39; is executed once. The workflow trains the model by 40000 iterations according to the `runner.max_iters`.</span>
-<span class="n">cudnn_benchmark</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c1"># Whether use cudnn_benchmark to speed up, which is fast for fixed input size.</span>
+<span class="n">cudnn_benchmark</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Whether use cudnn_benchmark to speed up, which is fast for fixed input size.</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>  <span class="c1"># Config used to build optimizer, support all the optimizers in PyTorch whose arguments are also the same as those in PyTorch</span>
     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">,</span>  <span class="c1"># Type of optimizers, refer to https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/optimizer/default_constructor.py#L13 for more details</span>
     <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>  <span class="c1"># Learning rate of optimizers, see detail usages of the parameters in the documentation of PyTorch</span>
@@ -544,12 +544,12 @@ For more detailed usage and the corresponding alternative for each module, pleas
     <span class="n">policy</span><span class="o">=</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span>  <span class="c1"># The policy of scheduler, also support Step, CosineAnnealing, Cyclic, etc. Refer to details of supported LrUpdater from https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/lr_updater.py#L9.</span>
     <span class="n">power</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>  <span class="c1"># The power of polynomial decay.</span>
     <span class="n">min_lr</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>  <span class="c1"># The minimum learning rate to stable the training.</span>
-    <span class="n">by_epoch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># Whether count by epoch or not.</span>
+    <span class="n">by_epoch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Whether count by epoch or not.</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;IterBasedRunner&#39;</span><span class="p">,</span> <span class="c1"># Type of runner to use (i.e. IterBasedRunner or EpochBasedRunner)</span>
     <span class="n">max_iters</span><span class="o">=</span><span class="mi">40000</span><span class="p">)</span> <span class="c1"># Total number of iterations. For EpochBasedRunner use `max_epochs`</span>
 <span class="n">checkpoint_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>  <span class="c1"># Config to set the checkpoint hook, Refer to https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/checkpoint.py for implementation.</span>
-    <span class="n">by_epoch</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="c1"># Whether count by epoch or not.</span>
+    <span class="n">by_epoch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Whether count by epoch or not.</span>
     <span class="n">interval</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>  <span class="c1"># The save interval.</span>
 <span class="n">evaluation</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>  <span class="c1"># The config to build the evaluation hook. Please refer to mmseg/core/evaluation/eval_hook.py for details.</span>
     <span class="n">interval</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>  <span class="c1"># The interval of evaluation.</span>
@@ -566,7 +566,7 @@ For more detailed usage and the corresponding alternative for each module, pleas
 <p>Sometimes, you may set <code class="docutils literal notranslate"><span class="pre">_delete_=True</span></code> to ignore some of the fields in base configs.
 You may refer to <a class="reference external" href="https://mmcv.readthedocs.io/en/latest/understand_mmcv/config.html#inherit-from-base-config-with-ignored-fields">mmcv</a> for simple illustration.</p>
 <p>In MMSegmentation, for example, to change the backbone of PSPNet with the following config.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MaskRCNN&#39;</span><span class="p">,</span>
     <span class="n">pretrained</span><span class="o">=</span><span class="s1">&#39;torchvision://resnet50&#39;</span><span class="p">,</span>
@@ -578,20 +578,20 @@ You may refer to <a class="reference external" href="https://mmcv.readthedocs.io
         <span class="n">dilations</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
         <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="n">norm_cfg</span><span class="o">=</span><span class="n">norm_cfg</span><span class="p">,</span>
-        <span class="n">norm_eval</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">norm_eval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">style</span><span class="o">=</span><span class="s1">&#39;pytorch&#39;</span><span class="p">,</span>
-        <span class="n">contract_dilation</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">contract_dilation</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="n">decode_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
     <span class="n">auxiliary_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">ResNet</span></code> and <code class="docutils literal notranslate"><span class="pre">HRNet</span></code> use different keywords to construct.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_base_</span> <span class="o">=</span> <span class="s1">&#39;../pspnet/psp_r50_512x1024_40ki_cityscpaes.py&#39;</span>
-<span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SyncBN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">pretrained</span><span class="o">=</span><span class="s1">&#39;open-mmlab://msra/hrnetv2_w32&#39;</span><span class="p">,</span>
     <span class="n">backbone</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-        <span class="n">_delete_</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+        <span class="n">_delete_</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;HRNet&#39;</span><span class="p">,</span>
         <span class="n">norm_cfg</span><span class="o">=</span><span class="n">norm_cfg</span><span class="p">,</span>
         <span class="n">extra</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
@@ -633,7 +633,7 @@ For example, we would like to change multi scale strategy to train/test a PSPNet
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_base_</span> <span class="o">=</span> <span class="s1">&#39;../pspnet/psp_r50_512x1024_40ki_cityscapes.py&#39;</span>
 <span class="n">crop_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 <span class="n">img_norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span> <span class="n">to_rgb</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">123.675</span><span class="p">,</span> <span class="mf">116.28</span><span class="p">,</span> <span class="mf">103.53</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">58.395</span><span class="p">,</span> <span class="mf">57.12</span><span class="p">,</span> <span class="mf">57.375</span><span class="p">],</span> <span class="n">to_rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">train_pipeline</span> <span class="o">=</span> <span class="p">[</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;LoadImageFromFile&#39;</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;LoadAnnotations&#39;</span><span class="p">),</span>
@@ -652,9 +652,9 @@ For example, we would like to change multi scale strategy to train/test a PSPNet
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MultiScaleFlipAug&#39;</span><span class="p">,</span>
         <span class="n">img_scale</span><span class="o">=</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
         <span class="n">img_ratios</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">],</span>  <span class="c1"># change to multi scale testing</span>
-        <span class="n">flip</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">transforms</span><span class="o">=</span><span class="p">[</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Resize&#39;</span><span class="p">,</span> <span class="n">keep_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;RandomFlip&#39;</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Normalize&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">img_norm_cfg</span><span class="p">),</span>
             <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ImageToTensor&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]),</span>
@@ -670,7 +670,7 @@ For example, we would like to change multi scale strategy to train/test a PSPNet
 <p>We first define the new <code class="docutils literal notranslate"><span class="pre">train_pipeline</span></code>/<code class="docutils literal notranslate"><span class="pre">test_pipeline</span></code> and pass them into <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>Similarly, if we would like to switch from <code class="docutils literal notranslate"><span class="pre">SyncBN</span></code> to <code class="docutils literal notranslate"><span class="pre">BN</span></code> or <code class="docutils literal notranslate"><span class="pre">MMSyncBN</span></code>, we need to substitute every <code class="docutils literal notranslate"><span class="pre">norm_cfg</span></code> in the config.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_base_</span> <span class="o">=</span> <span class="s1">&#39;../pspnet/psp_r50_512x1024_40ki_cityscpaes.py&#39;</span>
-<span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;BN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">norm_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;BN&#39;</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">backbone</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">norm_cfg</span><span class="o">=</span><span class="n">norm_cfg</span><span class="p">),</span>
     <span class="n">decode_head</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">norm_cfg</span><span class="o">=</span><span class="n">norm_cfg</span><span class="p">),</span>

@@ -5,7 +5,7 @@
    - ALGORITHM: 34
    - BACKBONE: 10
 
-* Number of checkpoints: 590
+* Number of checkpoints: 559
 
 	* [ALGORITHM] [ANN](https://github.com/open-mmlab/mmsegmentation/blob/master/configs/ann) (16 ckpts)
 
@@ -37,7 +37,7 @@
 	* [ALGORITHM] [DeepLabV3](https://github.com/open-mmlab/mmsegmentation/blob/master/configs/deeplabv3) (41 ckpts)
 
 
-	* [ALGORITHM] [DeepLabV3+](https://github.com/open-mmlab/mmsegmentation/blob/master/configs/deeplabv3plus) (42 ckpts)
+	* [ALGORITHM] [DeepLabV3+](https://github.com/open-mmlab/mmsegmentation/blob/master/configs/deeplabv3plus) (11 ckpts)
 
 
 	* [ALGORITHM] [DMNet](https://github.com/open-mmlab/mmsegmentation/blob/master/configs/dmnet) (12 ckpts)
