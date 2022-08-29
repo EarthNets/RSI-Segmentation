@@ -1,0 +1,1231 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Changelog &mdash; MMSegmentation 0.24.1 documentation</title>
+  
+
+  <link rel="shortcut icon" href="_static/images/favicon.ico" />
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/readthedocs.css" type="text/css" />
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Frequently Asked Questions (FAQ)" href="faq.html" />
+  <link rel="prev" title="Useful tools" href="useful_tools.html" />
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    var collapsedSections = [];
+  </script>
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+  <script>
+    MathJax = {
+        chtml: {
+            scale: 1,
+            minScale: 1,
+        },
+        svg: {
+            scale: 1,
+            minScale: 1,
+        }
+    }
+</script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://mmsegmentation.readthedocs.io/en/latest/"
+        aria-label="OpenMMLab"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation/blob/main/demo/MMSegmentation_Tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">GitHub</a>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                About
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/open-mmlab/mmcv" target="_blank">
+                  <span class="dropdown-title">MMCV </span>
+                  <p>Foundational library for computer vision</p>
+                </a>
+              </div>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                EarthNets
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/Dataset4EO" target="_blank">
+                  <span class="dropdown-title">Dataset4EO </span>
+                  <p>Re-organize remote sensing datasets.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Classification" target="_blank">
+                  <span class="dropdown-title">RSI-Classification </span>
+                  <p>Image/scene classification for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">
+                  <span class="dropdown-title">RSI-Segmentation </span>
+                  <p>Pixel-wise semantic segmentation for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Detection" target="_blank">
+                  <span class="dropdown-title">RSI-Detection </span>
+                  <p>Object detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-ChangeDetection" target="_blank">
+                  <span class="dropdown-title">RSI-ChangeDetection </span>
+                  <p>Change detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-SelfSupervised" target="_blank">
+                  <span class="dropdown-title">RSI-SelfSupervised </span>
+                  <p>Self-supervised learning for RS images.</p>
+                </a>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+  
+
+  <div class="table-of-contents-link-wrapper">
+    <span>Table of Contents</span>
+    <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+  </div>
+
+  <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+    <div class="pytorch-side-scroll">
+      <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <div class="pytorch-left-menu-search">
+          
+
+          
+          
+          
+          
+
+          
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        
+        
+        
+        
+        
+        <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html#verification">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dataset_prepare.html">Prepare datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model_zoo.html">Benchmark and Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelzoo_statistics.html">Model Zoo Statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick Run</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="train.html">Train a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">Inference with pretrained models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/config.html">Tutorial 1: Learn about Configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_datasets.html">Tutorial 2: Customize Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/data_pipeline.html">Tutorial 3: Customize Data Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_models.html">Tutorial 4: Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/training_tricks.html">Tutorial 5: Training Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_runtime.html">Tutorial 6: Customize Runtime Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful Tools and Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html">Useful tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#model-serving">Model Serving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="pytorch-container">
+    <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+      <div class="pytorch-breadcrumbs-wrapper">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+            Docs
+        </a> &gt;
+      </li>
+
+        
+      <li>Changelog</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="_sources/changelog.md.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+      </div>
+
+      <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+        Shortcuts
+      </div>
+    </div>
+
+    <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+      <div class="pytorch-content-left">
+        
+          <div class="rst-content">
+            
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+                
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">¶</a></h1>
+<section id="v0-24-1-5-1-2022">
+<h2>V0.24.1 (5/1/2022)<a class="headerlink" href="#v0-24-1-5-1-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">LayerDecayOptimizerConstructor</span></code> for MAE training (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1539">#1539</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1540">#1540</a>)</p></li>
+</ul>
+</section>
+<section id="v0-24-0-4-29-2022">
+<h2>V0.24.0 (4/29/2022)<a class="headerlink" href="#v0-24-0-4-29-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support MAE: Masked Autoencoders Are Scalable Vision Learners</p></li>
+<li><p>Support Resnet strikes back</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support MAE: Masked Autoencoders Are Scalable Vision Learners (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1307">1307</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1523">1523</a>)</p></li>
+<li><p>Support Resnet strikes back (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1390">1390</a>)</p></li>
+<li><p>Support extra dataloader settings in configs (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1435">1435</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix input previous results for the last cascade_decode_head (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1450">#1450</a>)</p></li>
+<li><p>Fix validation loss logging (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1494">#1494</a>)</p></li>
+<li><p>Fix the bug in binary_cross_entropy (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1527">1527</a>)</p></li>
+<li><p>Support single channel prediction for Binary Cross Entropy Loss (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1454">#1454</a>)</p></li>
+<li><p>Fix potential bugs in accuracy.py (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1496">1496</a>)</p></li>
+<li><p>Avoid converting label ids twice by label map during evaluation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1417">1417</a>)</p></li>
+<li><p>Fix bug about label_map (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1445">1445</a>)</p></li>
+<li><p>Fix image save path bug in Windows (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1423">1423</a>)</p></li>
+<li><p>Fix MMSegmentation Colab demo (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1501">1501</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1452">1452</a>)</p></li>
+<li><p>Migrate azure blob for beit checkpoints (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1503">1503</a>)</p></li>
+<li><p>Fix bug in <code class="docutils literal notranslate"><span class="pre">tools/analyse_logs.py</span></code> caused by wrong plot_iter in some cases (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1428">1428</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Merge BEiT and ConvNext’s LR decay optimizer constructors (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1438">#1438</a>)</p></li>
+<li><p>Register optimizer constructor with mmseg (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1456">#1456</a>)</p></li>
+<li><p>Refactor transformer encode layer in ViT and BEiT backbone (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1481">#1481</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">build_pos_embed</span></code> and <code class="docutils literal notranslate"><span class="pre">build_layers</span></code> for BEiT (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1517">1517</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">with_cp</span></code> to mit and vit (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1431">1431</a>)</p></li>
+<li><p>Fix inconsistent dtype of <code class="docutils literal notranslate"><span class="pre">seg_label</span></code> in stdc decode (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1463">1463</a>)</p></li>
+<li><p>Delete random seed for training in <code class="docutils literal notranslate"><span class="pre">dist_train.sh</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1519">1519</a>)</p></li>
+<li><p>Revise high <code class="docutils literal notranslate"><span class="pre">workers_per_gpus</span></code> in config file (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1506">#1506</a>)</p></li>
+<li><p>Add GPG keys and del mmcv version in Dockerfile (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1534">1534</a>)</p></li>
+<li><p>Update checkpoint for model in deeplabv3plus (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1487">#1487</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">DistSamplerSeedHook</span></code> to set epoch number to dataloader when runner is <code class="docutils literal notranslate"><span class="pre">EpochBasedRunner</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1449">1449</a>)</p></li>
+<li><p>Provide URLs of Swin Transformer pretrained models (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1389">1389</a>)</p></li>
+<li><p>Updating Dockerfiles From Docker Directory and <code class="docutils literal notranslate"><span class="pre">get_started.md</span></code> to reach latest stable version of Python, PyTorch and MMCV (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1446">1446</a>)</p></li>
+</ul>
+<p><strong>Documentation</strong></p>
+<ul class="simple">
+<li><p>Add more clearly statement of CPU training/inference (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1518">1518</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<ul class="simple">
+<li><p>&#64;jiangyitong made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1431</p></li>
+<li><p>&#64;kahkeng made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1447</p></li>
+<li><p>&#64;Nourollah made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1446</p></li>
+<li><p>&#64;androbaza made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1452</p></li>
+<li><p>&#64;Yzichen made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1445</p></li>
+<li><p>&#64;whu-pzhang made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1423</p></li>
+<li><p>&#64;panfeng-hover made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1417</p></li>
+<li><p>&#64;Johnson-Wang made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1496</p></li>
+<li><p>&#64;jere357 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1460</p></li>
+<li><p>&#64;mfernezir made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1494</p></li>
+<li><p>&#64;donglixp made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1503</p></li>
+<li><p>&#64;YuanLiuuuuuu made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1307</p></li>
+<li><p>&#64;Dawn-bin made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1527</p></li>
+</ul>
+</section>
+<section id="v0-23-0-4-1-2022">
+<h2>V0.23.0 (4/1/2022)<a class="headerlink" href="#v0-23-0-4-1-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support BEiT: BERT Pre-Training of Image Transformers</p></li>
+<li><p>Support K-Net: Towards Unified Image Segmentation</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">avg_non_ignore</span></code> of CELoss to support average loss over non-ignored elements</p></li>
+<li><p>Support dataset initialization with file client</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support BEiT: BERT Pre-Training of Image Transformers (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1404">#1404</a>)</p></li>
+<li><p>Support K-Net: Towards Unified Image Segmentation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1289">#1289</a>)</p></li>
+<li><p>Support dataset initialization with file client (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1402">#1402</a>)</p></li>
+<li><p>Add class name function for STARE datasets (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1376">#1376</a>)</p></li>
+<li><p>Support different seeds on different ranks when distributed training (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1362">#1362</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">nlc2nchw2nlc</span></code> and <code class="docutils literal notranslate"><span class="pre">nchw2nlc2nchw</span></code> to simplify tensor with different dimension operation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1249">#1249</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Synchronize random seed for distributed sampler (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1411">#1411</a>)</p></li>
+<li><p>Add script and documentation for multi-machine distributed training (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1383">#1383</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">avg_non_ignore</span></code> of CELoss to support average loss over non-ignored elements (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1409">#1409</a>)</p></li>
+<li><p>Fix some wrong URLs of models or logs in <code class="docutils literal notranslate"><span class="pre">./configs</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1433">#1336</a>)</p></li>
+<li><p>Add title and color theme arguments to plot function in <code class="docutils literal notranslate"><span class="pre">tools/confusion_matrix.py</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1401">#1401</a>)</p></li>
+<li><p>Fix outdated link in Colab demo (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1392">#1392</a>)</p></li>
+<li><p>Fix typos (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1424">#1424</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1405">#1405</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1371">#1371</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1366">#1366</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1363">#1363</a>)</p></li>
+</ul>
+<p><strong>Documentation</strong></p>
+<ul class="simple">
+<li><p>Add FAQ document (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1420">#1420</a>)</p></li>
+<li><p>Fix the config name style description in official docs(<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1414">#1414</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<ul class="simple">
+<li><p>&#64;kinglintianxia made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1371</p></li>
+<li><p>&#64;CCODING04 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1376</p></li>
+<li><p>&#64;mob5566 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1401</p></li>
+<li><p>&#64;xiongnemo made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1392</p></li>
+<li><p>&#64;Xiangxu-0103 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1405</p></li>
+</ul>
+</section>
+<section id="v0-22-1-3-9-2022">
+<h2>V0.22.1 (3/9/2022)<a class="headerlink" href="#v0-22-1-3-9-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix the ZeroDivisionError that all pixels in one image is ignored. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1336">#1336</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Provide URLs of STDC, Segmenter and Twins pretrained models (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1357">#1272</a>)</p></li>
+</ul>
+</section>
+<section id="v0-22-3-04-2022">
+<h2>V0.22 (3/04/2022)<a class="headerlink" href="#v0-22-3-04-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support ConvNeXt: A ConvNet for the 2020s. Please use the latest MMClassification (0.21.0) to try it out.</p></li>
+<li><p>Support iSAID aerial Dataset.</p></li>
+<li><p>Officially Support inference on Windows OS.</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support ConvNeXt: A ConvNet for the 2020s. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1216">#1216</a>)</p></li>
+<li><p>Support iSAID aerial Dataset. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1115">#1115</a></p></li>
+<li><p>Generating and plotting confusion matrix. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1301">#1301</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Refactor 4 decoder heads (ASPP, FCN, PSP, UPer): Split forward function into <code class="docutils literal notranslate"><span class="pre">_forward_feature</span></code> and <code class="docutils literal notranslate"><span class="pre">cls_seg</span></code>. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1299">#1299</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">min_size</span></code> arg in <code class="docutils literal notranslate"><span class="pre">Resize</span></code> to keep the shape after resize bigger than slide window. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1318">#1318</a>)</p></li>
+<li><p>Revise pre-commit-hooks. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1315">#1315</a>)</p></li>
+<li><p>Add win-ci. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1296">#1296</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">mlp_ratio</span></code> type in Swin Transformer. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1274">#1274</a>)</p></li>
+<li><p>Fix path errors in <code class="docutils literal notranslate"><span class="pre">./demo</span></code> . (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1269">#1269</a>)</p></li>
+<li><p>Fix bug in conversion of potsdam. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1279">#1279</a>)</p></li>
+<li><p>Make accuracy take into account <code class="docutils literal notranslate"><span class="pre">ignore_index</span></code>. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1259">#1259</a>)</p></li>
+<li><p>Add Pytorch HardSwish assertion in unit test. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1294">#1294</a>)</p></li>
+<li><p>Fix wrong palette value in vaihingen. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1292">#1292</a>)</p></li>
+<li><p>Fix the bug that SETR cannot load pretrain. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1293">#1293</a>)</p></li>
+<li><p>Update correct <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Collection</span></code> in metafile of each configs. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1239">#1239</a>)</p></li>
+<li><p>Upload completed STDC models. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1332">#1332</a>)</p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">DNLHead</span></code> exports onnx inference difference type Cast error. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1332">#1161</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<ul class="simple">
+<li><p>&#64;JiaYanhao made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1269</p></li>
+<li><p>&#64;andife made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1281</p></li>
+<li><p>&#64;SBCV made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1279</p></li>
+<li><p>&#64;HJoonKwon made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1259</p></li>
+<li><p>&#64;Tsingularity made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1290</p></li>
+<li><p>&#64;Waterman0524 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1115</p></li>
+<li><p>&#64;MeowZheng made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1315</p></li>
+<li><p>&#64;linfangjian01 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1318</p></li>
+</ul>
+</section>
+<section id="v0-21-1-2-9-2022">
+<h2>V0.21.1 (2/9/2022)<a class="headerlink" href="#v0-21-1-2-9-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix typos in docs. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1263">#1263</a>)</p></li>
+<li><p>Fix repeating log by <code class="docutils literal notranslate"><span class="pre">setup_multi_processes</span></code>. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1267">#1267</a>)</p></li>
+<li><p>Upgrade isort in pre-commit hook. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1270">#1270</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Use MMCV load_state_dict func in ViT/Swin. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1272">#1272</a>)</p></li>
+<li><p>Add exception for PointRend for support CPU-only. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1270">#1271</a>)</p></li>
+</ul>
+</section>
+<section id="v0-21-1-29-2022">
+<h2>V0.21 (1/29/2022)<a class="headerlink" href="#v0-21-1-29-2022" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Officially Support CPUs training and inference, please use the latest MMCV (1.4.4) to try it out.</p></li>
+<li><p>Support Segmenter: Transformer for Semantic Segmentation (ICCV’2021).</p></li>
+<li><p>Support ISPRS Potsdam and Vaihingen Dataset.</p></li>
+<li><p>Add Mosaic transform and <code class="docutils literal notranslate"><span class="pre">MultiImageMixDataset</span></code> class in <code class="docutils literal notranslate"><span class="pre">dataset_wrappers</span></code>.</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support Segmenter: Transformer for Semantic Segmentation (ICCV’2021) (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/955">#955</a>)</p></li>
+<li><p>Support ISPRS Potsdam and Vaihingen Dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1097">#1097</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1171">#1171</a>)</p></li>
+<li><p>Add segformer‘s benchmark on cityscapes (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1155">#1155</a>)</p></li>
+<li><p>Add auto resume (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1172">#1172</a>)</p></li>
+<li><p>Add Mosaic transform and <code class="docutils literal notranslate"><span class="pre">MultiImageMixDataset</span></code> class in <code class="docutils literal notranslate"><span class="pre">dataset_wrappers</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1093">#1093</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1105">#1105</a>)</p></li>
+<li><p>Add log collector (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1175">#1175</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>New-style CPU training and inference (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1251">#1251</a>)</p></li>
+<li><p>Add UNet benchmark with multiple losses supervision (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1143">#1143</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix the model statistics in doc for readthedoc (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1153">#1153</a>)</p></li>
+<li><p>Set random seed for <code class="docutils literal notranslate"><span class="pre">palette</span></code> if not given (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1152">#1152</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">COCOStuffDataset</span></code> in <code class="docutils literal notranslate"><span class="pre">class_names.py</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1222">#1222</a>)</p></li>
+<li><p>Fix bug in non-distributed multi-gpu training/testing (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1247">#1247</a>)</p></li>
+<li><p>Delete unnecessary lines of STDCHead (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1231">#1231</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<ul class="simple">
+<li><p>&#64;jbwang1997 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1152</p></li>
+<li><p>&#64;BeaverCC made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1206</p></li>
+<li><p>&#64;Echo-minn made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1214</p></li>
+<li><p>&#64;rstrudel made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/955</p></li>
+</ul>
+</section>
+<section id="v0-20-2-12-15-2021">
+<h2>V0.20.2 (12/15/2021)<a class="headerlink" href="#v0-20-2-12-15-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Revise –option to –options to avoid BC-breaking. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1140">#1140</a>)</p></li>
+</ul>
+</section>
+<section id="v0-20-1-12-14-2021">
+<h2>V0.20.1 (12/14/2021)<a class="headerlink" href="#v0-20-1-12-14-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Change options to cfg-options (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1129">#1129</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">&lt;!--</span> <span class="pre">[ABSTRACT]</span> <span class="pre">--&gt;</span></code> in metafile. (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1127">#1127</a>)</p></li>
+<li><p>Fix correct <code class="docutils literal notranslate"><span class="pre">num_classes</span></code> of HRNet in <code class="docutils literal notranslate"><span class="pre">LoveDA</span></code> dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1136">#1136</a>)</p></li>
+</ul>
+</section>
+<section id="v0-20-12-10-2021">
+<h2>V0.20 (12/10/2021)<a class="headerlink" href="#v0-20-12-10-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support Twins (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/989">#989</a>)</p></li>
+<li><p>Support a real-time segmentation model STDC (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/995">#995</a>)</p></li>
+<li><p>Support a widely-used segmentation model in lane detection ERFNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/960">#960</a>)</p></li>
+<li><p>Support A Remote Sensing Land-Cover Dataset LoveDA (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1028">#1028</a>)</p></li>
+<li><p>Support focal loss (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1024">#1024</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support Twins (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/989">#989</a>)</p></li>
+<li><p>Support a real-time segmentation model STDC (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/995">#995</a>)</p></li>
+<li><p>Support a widely-used segmentation model in lane detection ERFNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/960">#960</a>)</p></li>
+<li><p>Add SETR cityscapes benchmark (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1087">#1087</a>)</p></li>
+<li><p>Add BiSeNetV1 COCO-Stuff 164k benchmark (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1019">#1019</a>)</p></li>
+<li><p>Support focal loss (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1024">#1024</a>)</p></li>
+<li><p>Add Cutout transform (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1022">#1022</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Set a random seed when the user does not set a seed (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1039">#1039</a>)</p></li>
+<li><p>Add CircleCI setup (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1086">#1086</a>)</p></li>
+<li><p>Skip CI on ignoring given paths (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1078">#1078</a>)</p></li>
+<li><p>Add abstract and image for every paper (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1060">#1060</a>)</p></li>
+<li><p>Create a symbolic link on windows (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1090">#1090</a>)</p></li>
+<li><p>Support video demo using trained model (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1014">#1014</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix incorrectly loading init_cfg or pretrained models of several transformer models (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/999">#999</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1069">#1069</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1102">#1102</a>)</p></li>
+<li><p>Fix EfficientMultiheadAttention in SegFormer (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1037">#1037</a>)</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">fp16</span></code> folder in <code class="docutils literal notranslate"><span class="pre">configs</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1031">#1031</a>)</p></li>
+<li><p>Fix several typos in .yml file (Dice Metric <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1041">#1041</a>, ADE20K dataset <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1120">#1120</a>, Training Memory (GB) <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1083">#1083</a>)</p></li>
+<li><p>Fix test error when using <code class="docutils literal notranslate"><span class="pre">--show-dir</span></code> (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1091">#1091</a>)</p></li>
+<li><p>Fix dist training infinite waiting issue (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1035">#1035</a>)</p></li>
+<li><p>Change the upper version of mmcv to 1.5.0 (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1096">#1096</a>)</p></li>
+<li><p>Fix symlink failure on Windows (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1038">#1038</a>)</p></li>
+<li><p>Cancel previous runs that are not completed (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1118">#1118</a>)</p></li>
+<li><p>Unified links of readthedocs in docs (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1119">#1119</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<ul class="simple">
+<li><p>&#64;Junjue-Wang made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1028</p></li>
+<li><p>&#64;ddebby made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1066</p></li>
+<li><p>&#64;del-zhenwu made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1078</p></li>
+<li><p>&#64;KangBK0120 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1106</p></li>
+<li><p>&#64;zergzzlun made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1091</p></li>
+<li><p>&#64;fingertap made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1035</p></li>
+<li><p>&#64;irvingzhang0512 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1014</p></li>
+<li><p>&#64;littleSunlxy made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/989</p></li>
+<li><p>&#64;lkm2835</p></li>
+<li><p>&#64;RockeyCoss</p></li>
+<li><p>&#64;MengzhangLI</p></li>
+<li><p>&#64;Junjun2016</p></li>
+<li><p>&#64;xiexinch</p></li>
+<li><p>&#64;xvjiarui</p></li>
+</ul>
+</section>
+<section id="v0-19-11-02-2021">
+<h2>V0.19 (11/02/2021)<a class="headerlink" href="#v0-19-11-02-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support TIMMBackbone wrapper (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/998">#998</a>)</p></li>
+<li><p>Support custom hook (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/428">#428</a>)</p></li>
+<li><p>Add codespell pre-commit hook (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/920">#920</a>)</p></li>
+<li><p>Add FastFCN benchmark on ADE20K (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/972">#972</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support TIMMBackbone wrapper (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/998">#998</a>)</p></li>
+<li><p>Support custom hook (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/428">#428</a>)</p></li>
+<li><p>Add FastFCN benchmark on ADE20K (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/972">#972</a>)</p></li>
+<li><p>Add codespell pre-commit hook and fix typos (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/920">#920</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Make inputs &amp; channels smaller in unittests (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1004">#1004</a>)</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">self.loss_decode</span></code> back to <code class="docutils literal notranslate"><span class="pre">dict</span></code> in Single Loss situation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1002">#1002</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix typo in usage example (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/1003">#1003</a>)</p></li>
+<li><p>Add contiguous after permutation in ViT (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/992">#992</a>)</p></li>
+<li><p>Fix the invalid link (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/985">#985</a>)</p></li>
+<li><p>Fix bug in CI with python 3.9 (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/994">#994</a>)</p></li>
+<li><p>Fix bug when loading class name form file in custom dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/923">#923</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<ul class="simple">
+<li><p>&#64;ShoupingShan made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/923</p></li>
+<li><p>&#64;RockeyCoss made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/954</p></li>
+<li><p>&#64;HarborYuan made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/992</p></li>
+<li><p>&#64;lkm2835 made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/1003</p></li>
+<li><p>&#64;gszh made their first contribution in https://github.com/open-mmlab/mmsegmentation/pull/428</p></li>
+<li><p>&#64;VVsssssk</p></li>
+<li><p>&#64;MengzhangLI</p></li>
+<li><p>&#64;Junjun2016</p></li>
+</ul>
+</section>
+<section id="v0-18-10-07-2021">
+<h2>V0.18 (10/07/2021)<a class="headerlink" href="#v0-18-10-07-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support three real-time segmentation models (ICNet <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/884">#884</a>, BiSeNetV1 <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/851">#851</a>, and BiSeNetV2 <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/804">#804</a>)</p></li>
+<li><p>Support one efficient segmentation model (FastFCN <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/885">#885</a>)</p></li>
+<li><p>Support one efficient non-local/self-attention based segmentation model (ISANet <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/70">#70</a>)</p></li>
+<li><p>Support COCO-Stuff 10k and 164k datasets (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/625">#625</a>)</p></li>
+<li><p>Support evaluate concated dataset separately (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/833">#833</a>)</p></li>
+<li><p>Support loading GT for evaluation from multi-file backend (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/867">#867</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support three real-time segmentation models (ICNet <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/884">#884</a>, BiSeNetV1 <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/851">#851</a>, and BiSeNetV2 <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/804">#804</a>)</p></li>
+<li><p>Support one efficient segmentation model (FastFCN <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/885">#885</a>)</p></li>
+<li><p>Support one efficient non-local/self-attention based segmentation model (ISANet <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/70">#70</a>)</p></li>
+<li><p>Support COCO-Stuff 10k and 164k datasets (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/625">#625</a>)</p></li>
+<li><p>Support evaluate concated dataset separately (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/833">#833</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Support loading GT for evaluation from multi-file backend (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/867">#867</a>)</p></li>
+<li><p>Auto-convert SyncBN to BN when training on DP automatly(<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/772">#772</a>)</p></li>
+<li><p>Refactor Swin-Transformer (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/800">#800</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Update mmcv installation in dockerfile (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/860">#860</a>)</p></li>
+<li><p>Fix number of iteration bug when resuming checkpoint in distributed train (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/866">#866</a>)</p></li>
+<li><p>Fix parsing parse in val_step (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/906">#906</a>)</p></li>
+</ul>
+</section>
+<section id="v0-17-09-01-2021">
+<h2>V0.17 (09/01/2021)<a class="headerlink" href="#v0-17-09-01-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support SegFormer</p></li>
+<li><p>Support DPT</p></li>
+<li><p>Support Dark Zurich and Nighttime Driving datasets</p></li>
+<li><p>Support progressive evaluation</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support SegFormer (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/599">#599</a>)</p></li>
+<li><p>Support DPT (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/605">#605</a>)</p></li>
+<li><p>Support Dark Zurich and Nighttime Driving datasets (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/815">#815</a>)</p></li>
+<li><p>Support progressive evaluation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/709">#709</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Add multiscale_output interface and unittests for HRNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/830">#830</a>)</p></li>
+<li><p>Support inherit cityscapes dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/750">#750</a>)</p></li>
+<li><p>Fix some typos in README.md (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/824">#824</a>)</p></li>
+<li><p>Delete convert function and add instruction to ViT/Swin README.md (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/791">#791</a>)</p></li>
+<li><p>Add vit/swin/mit convert weight scripts (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/783">#783</a>)</p></li>
+<li><p>Add copyright files (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/796">#796</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix invalid checkpoint link in inference_demo.ipynb (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/814">#814</a>)</p></li>
+<li><p>Ensure that items in dataset have the same order across multi machine (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/780">#780</a>)</p></li>
+<li><p>Fix the log error (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/766">#766</a>)</p></li>
+</ul>
+</section>
+<section id="v0-16-08-04-2021">
+<h2>V0.16 (08/04/2021)<a class="headerlink" href="#v0-16-08-04-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support PyTorch 1.9</p></li>
+<li><p>Support SegFormer backbone MiT</p></li>
+<li><p>Support md2yml pre-commit hook</p></li>
+<li><p>Support frozen stage for HRNet</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support SegFormer backbone MiT (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/594">#594</a>)</p></li>
+<li><p>Support md2yml pre-commit hook (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/732">#732</a>)</p></li>
+<li><p>Support mim (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/717">#717</a>)</p></li>
+<li><p>Add mmseg2torchserve tool (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/552">#552</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Support hrnet frozen stage (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/743">#743</a>)</p></li>
+<li><p>Add template of reimplementation questions (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/741">#741</a>)</p></li>
+<li><p>Output pdf and epub formats for readthedocs (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/742">#742</a>)</p></li>
+<li><p>Refine the docstring of ResNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/723">#723</a>)</p></li>
+<li><p>Replace interpolate with resize (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/731">#731</a>)</p></li>
+<li><p>Update resource limit (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/700">#700</a>)</p></li>
+<li><p>Update config.md (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/678">#678</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix ATTENTION registry (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/729">#729</a>)</p></li>
+<li><p>Fix analyze log script (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/716">#716</a>)</p></li>
+<li><p>Fix doc api display (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/725">#725</a>)</p></li>
+<li><p>Fix patch_embed and pos_embed mismatch error (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/685">#685</a>)</p></li>
+<li><p>Fix efficient test for multi-node (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/707">#707</a>)</p></li>
+<li><p>Fix init_cfg in resnet backbone (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/697">#697</a>)</p></li>
+<li><p>Fix efficient test bug (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/702">#702</a>)</p></li>
+<li><p>Fix url error in config docs (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/680">#680</a>)</p></li>
+<li><p>Fix mmcv installation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/676">#676</a>)</p></li>
+<li><p>Fix torch version (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/670">#670</a>)</p></li>
+</ul>
+<p><strong>Contributors</strong></p>
+<p>&#64;sshuair &#64;xiexinch &#64;Junjun2016 &#64;mmeendez8 &#64;xvjiarui &#64;sennnnn &#64;puhsu &#64;BIGWangYuDong &#64;keke1u &#64;daavoo</p>
+</section>
+<section id="v0-15-07-04-2021">
+<h2>V0.15 (07/04/2021)<a class="headerlink" href="#v0-15-07-04-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support ViT, SETR, and Swin-Transformer</p></li>
+<li><p>Add Chinese documentation</p></li>
+<li><p>Unified parameter initialization</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix typo and links (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/608">#608</a>)</p></li>
+<li><p>Fix Dockerfile (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/607">#607</a>)</p></li>
+<li><p>Fix ViT init (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/609">#609</a>)</p></li>
+<li><p>Fix mmcv version compatible table (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/658">#658</a>)</p></li>
+<li><p>Fix model links of DMNEt (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/660">#660</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support loading DeiT weights (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/538">#538</a>)</p></li>
+<li><p>Support SETR (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/531">#531</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/635">#635</a>)</p></li>
+<li><p>Add config and models for ViT backbone with UperHead (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/531">#520</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/520">#635</a>)</p></li>
+<li><p>Support Swin-Transformer (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/511">#511</a>)</p></li>
+<li><p>Add higher accuracy FastSCNN (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/606">#606</a>)</p></li>
+<li><p>Add Chinese documentation (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/666">#666</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Unified parameter initialization (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/567">#567</a>)</p></li>
+<li><p>Separate CUDA and CPU in  github action CI (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/602">#602</a>)</p></li>
+<li><p>Support persistent dataloader worker (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/646">#646</a>)</p></li>
+<li><p>Update meta file fields (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/661">#661</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/664">#664</a>)</p></li>
+</ul>
+</section>
+<section id="v0-14-06-02-2021">
+<h2>V0.14 (06/02/2021)<a class="headerlink" href="#v0-14-06-02-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support ONNX to TensorRT</p></li>
+<li><p>Support MIM</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fix ONNX to TensorRT verify (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/547">#547</a>)</p></li>
+<li><p>Fix save best for EvalHook (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/575">#575</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support loading DeiT weights (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/538">#538</a>)</p></li>
+<li><p>Support ONNX to TensorRT (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/542">#542</a>)</p></li>
+<li><p>Support output results for ADE20k (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/544">#544</a>)</p></li>
+<li><p>Support MIM (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/549">#549</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Add option for ViT output shape (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/530">#530</a>)</p></li>
+<li><p>Infer batch size using len(result) (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/532">#532</a>)</p></li>
+<li><p>Add compatible table between MMSeg and MMCV (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/558">#558</a>)</p></li>
+</ul>
+</section>
+<section id="v0-13-05-05-2021">
+<h2>V0.13 (05/05/2021)<a class="headerlink" href="#v0-13-05-05-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support Pascal Context Class-59 dataset.</p></li>
+<li><p>Support Visual Transformer Backbone.</p></li>
+<li><p>Support mFscore metric.</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed Colaboratory tutorial (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/451">#451</a>)</p></li>
+<li><p>Fixed mIoU calculation range (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/471">#471</a>)</p></li>
+<li><p>Fixed sem_fpn, unet README.md (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/492">#492</a>)</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">num_classes</span></code> in FCN for Pascal Context 60-class dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/488">#488</a>)</p></li>
+<li><p>Fixed FP16 inference (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/497">#497</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support dynamic export and visualize to pytorch2onnx (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/463">#463</a>)</p></li>
+<li><p>Support export to torchscript (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/469">#469</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/499">#499</a>)</p></li>
+<li><p>Support Pascal Context Class-59 dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/459">#459</a>)</p></li>
+<li><p>Support Visual Transformer backbone (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/465">#465</a>)</p></li>
+<li><p>Support UpSample Neck (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/512">#512</a>)</p></li>
+<li><p>Support mFscore metric (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/509">#509</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Add more CI for PyTorch (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/460">#460</a>)</p></li>
+<li><p>Add print model graph args for tools/print_config.py (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/451">#451</a>)</p></li>
+<li><p>Add cfg links in modelzoo README.md (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/469">#468</a>)</p></li>
+<li><p>Add BaseSegmentor import to segmentors/<strong>init</strong>.py (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/495">#495</a>)</p></li>
+<li><p>Add MMOCR, MMGeneration links (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/501">#501</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/506">#506</a>)</p></li>
+<li><p>Add Chinese QR code (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/506">#506</a>)</p></li>
+<li><p>Use MMCV MODEL_REGISTRY (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/515">#515</a>)</p></li>
+<li><p>Add ONNX testing tools (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/498">#498</a>)</p></li>
+<li><p>Replace data_dict calling ‘img’ key to support MMDet3D (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/514">#514</a>)</p></li>
+<li><p>Support reading class_weight from file in loss function (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/513">#513</a>)</p></li>
+<li><p>Make tags as comment (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/505">#505</a>)</p></li>
+<li><p>Use MMCV EvalHook (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/438">#438</a>)</p></li>
+</ul>
+</section>
+<section id="v0-12-04-03-2021">
+<h2>V0.12 (04/03/2021)<a class="headerlink" href="#v0-12-04-03-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support FCN-Dilate 6 model.</p></li>
+<li><p>Support Dice Loss.</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed PhotoMetricDistortion Doc (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/388">#388</a>)</p></li>
+<li><p>Fixed install scripts (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/399">#399</a>)</p></li>
+<li><p>Fixed Dice Loss multi-class (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/417">#417</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support Dice Loss (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/396">#396</a>)</p></li>
+<li><p>Add plot logs tool (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/426">#426</a>)</p></li>
+<li><p>Add opacity option to show_result (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/425">#425</a>)</p></li>
+<li><p>Speed up mIoU metric (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/430">#430</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Refactor unittest file structure (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/440">#440</a>)</p></li>
+<li><p>Fix typos in the repo (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/449">#449</a>)</p></li>
+<li><p>Include class-level metrics in the log (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/445">#445</a>)</p></li>
+</ul>
+</section>
+<section id="v0-11-02-02-2021">
+<h2>V0.11 (02/02/2021)<a class="headerlink" href="#v0-11-02-02-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support memory efficient test, add more UNet models.</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed TTA resize scale (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/334">#334</a>)</p></li>
+<li><p>Fixed CI for pip 20.3 (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/307">#307</a>)</p></li>
+<li><p>Fixed ADE20k test (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/359">#359</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support memory efficient test (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/330">#330</a>)</p></li>
+<li><p>Add more UNet benchmarks (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/324">#324</a>)</p></li>
+<li><p>Support Lovasz Loss (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/351">#351</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Move train_cfg/test_cfg inside model (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/341">#341</a>)</p></li>
+</ul>
+</section>
+<section id="v0-10-01-01-2021">
+<h2>V0.10 (01/01/2021)<a class="headerlink" href="#v0-10-01-01-2021" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support MobileNetV3, DMNet, APCNet. Add models of ResNet18V1b, ResNet18V1c, ResNet50V1b.</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed CPU TTA (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/276">#276</a>)</p></li>
+<li><p>Fixed CI for pip 20.3 (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/307">#307</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Add ResNet18V1b, ResNet18V1c, ResNet50V1b, ResNet101V1b models (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/316">#316</a>)</p></li>
+<li><p>Support MobileNetV3 (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/268">#268</a>)</p></li>
+<li><p>Add 4 retinal vessel segmentation benchmark  (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/315">#315</a>)</p></li>
+<li><p>Support DMNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/313">#313</a>)</p></li>
+<li><p>Support APCNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/299">#299</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Refactor Documentation page (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/311">#311</a>)</p></li>
+<li><p>Support resize data augmentation according to original image size (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/291">#291</a>)</p></li>
+</ul>
+</section>
+<section id="v0-9-30-11-2020">
+<h2>V0.9 (30/11/2020)<a class="headerlink" href="#v0-9-30-11-2020" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support 4 medical dataset, UNet and CGNet.</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support RandomRotate transform (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/215">#215</a>, <a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/260">#260</a>)</p></li>
+<li><p>Support RGB2Gray transform (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/227">#227</a>)</p></li>
+<li><p>Support Rerange transform (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/228">#228</a>)</p></li>
+<li><p>Support ignore_index for BCE loss (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/210">#210</a>)</p></li>
+<li><p>Add modelzoo statistics (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/263">#263</a>)</p></li>
+<li><p>Support Dice evaluation metric (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/225">#225</a>)</p></li>
+<li><p>Support Adjust Gamma transform (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/232">#232</a>)</p></li>
+<li><p>Support CLAHE transform (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/229">#229</a>)</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed detail API link (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/267">#267</a>)</p></li>
+</ul>
+</section>
+<section id="v0-8-03-11-2020">
+<h2>V0.8 (03/11/2020)<a class="headerlink" href="#v0-8-03-11-2020" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support 4 medical dataset, UNet and CGNet.</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support customize runner (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/118">#118</a>)</p></li>
+<li><p>Support UNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/162">#161</a>)</p></li>
+<li><p>Support CHASE_DB1, DRIVE, STARE, HRD (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/203">#203</a>)</p></li>
+<li><p>Support CGNet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/223">#223</a>)</p></li>
+</ul>
+</section>
+<section id="v0-7-07-10-2020">
+<h2>V0.7 (07/10/2020)<a class="headerlink" href="#v0-7-07-10-2020" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support Pascal Context dataset and customizing class dataset.</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed CPU inference (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/153">#153</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Add DeepLab OS16 models (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/154">#154</a>)</p></li>
+<li><p>Support Pascal Context dataset (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/133">#133</a>)</p></li>
+<li><p>Support customizing dataset classes (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/71">#71</a>)</p></li>
+<li><p>Support customizing dataset palette (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/157">#157</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Support 4D tensor output in ONNX (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/150">#150</a>)</p></li>
+<li><p>Remove redundancies in ONNX export (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/160">#160</a>)</p></li>
+<li><p>Migrate to MMCV DepthwiseSeparableConv (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/158">#158</a>)</p></li>
+<li><p>Migrate to MMCV collect_env (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/137">#137</a>)</p></li>
+<li><p>Use img_prefix and seg_prefix for loading (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/153">#153</a>)</p></li>
+</ul>
+</section>
+<section id="v0-6-10-09-2020">
+<h2>V0.6 (10/09/2020)<a class="headerlink" href="#v0-6-10-09-2020" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support new methods i.e. MobileNetV2, EMANet, DNL, PointRend, Semantic FPN, Fast-SCNN, ResNeSt.</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed sliding inference ONNX export (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/90">#90</a>)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support MobileNet v2 (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/86">#86</a>)</p></li>
+<li><p>Support EMANet (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/34">#34</a>)</p></li>
+<li><p>Support DNL (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/37">#37</a>)</p></li>
+<li><p>Support PointRend (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/109">#109</a>)</p></li>
+<li><p>Support Semantic FPN (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/94">#94</a>)</p></li>
+<li><p>Support Fast-SCNN (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/58">#58</a>)</p></li>
+<li><p>Support ResNeSt backbone (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/47">#47</a>)</p></li>
+<li><p>Support ONNX export (experimental) (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/12">#12</a>)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Support Upsample in ONNX (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/100">#100</a>)</p></li>
+<li><p>Support Windows install (experimental) (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/75">#75</a>)</p></li>
+<li><p>Add more OCRNet results (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/20">#20</a>)</p></li>
+<li><p>Add PyTorch 1.6 CI (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/64">#64</a>)</p></li>
+<li><p>Get version and githash automatically (<a class="reference external" href="https://github.com/open-mmlab/mmsegmentation/pull/55">#55</a>)</p></li>
+</ul>
+</section>
+<section id="v0-5-1-11-08-2020">
+<h2>v0.5.1 (11/08/2020)<a class="headerlink" href="#v0-5-1-11-08-2020" title="Permalink to this heading">¶</a></h2>
+<p><strong>Highlights</strong></p>
+<ul class="simple">
+<li><p>Support FP16 and more generalized OHEM</p></li>
+</ul>
+<p><strong>Bug Fixes</strong></p>
+<ul class="simple">
+<li><p>Fixed Pascal VOC conversion script (#19)</p></li>
+<li><p>Fixed OHEM weight assign bug (#54)</p></li>
+<li><p>Fixed palette type when palette is not given (#27)</p></li>
+</ul>
+<p><strong>New Features</strong></p>
+<ul class="simple">
+<li><p>Support FP16 (#21)</p></li>
+<li><p>Generalized OHEM (#54)</p></li>
+</ul>
+<p><strong>Improvements</strong></p>
+<ul class="simple">
+<li><p>Add load-from flag (#33)</p></li>
+<li><p>Fixed training tricks doc about different learning rates of model (#26)</p></li>
+</ul>
+</section>
+</section>
+
+
+              </article>
+              
+            </div>
+            <footer>
+  
+  <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+    
+    <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions (FAQ)" accesskey="n"
+      rel="next">Next <img src="_static/images/chevron-right-blue.svg"
+        class="next-page"></a>
+    
+    
+    <a href="useful_tools.html" class="btn btn-neutral" title="Useful tools" accesskey="p"
+      rel="prev"><img src="_static/images/chevron-right-blue.svg" class="previous-page"> Previous</a>
+    
+  </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+      &copy; Copyright 2020-2021, OpenMMLab.
+
+    </p>
+  </div>
+  
+  <div>
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+      href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the
+      Docs</a>.
+  </div>
+   
+
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#v0-24-1-5-1-2022">V0.24.1 (5/1/2022)</a></li>
+<li><a class="reference internal" href="#v0-24-0-4-29-2022">V0.24.0 (4/29/2022)</a></li>
+<li><a class="reference internal" href="#v0-23-0-4-1-2022">V0.23.0 (4/1/2022)</a></li>
+<li><a class="reference internal" href="#v0-22-1-3-9-2022">V0.22.1 (3/9/2022)</a></li>
+<li><a class="reference internal" href="#v0-22-3-04-2022">V0.22 (3/04/2022)</a></li>
+<li><a class="reference internal" href="#v0-21-1-2-9-2022">V0.21.1 (2/9/2022)</a></li>
+<li><a class="reference internal" href="#v0-21-1-29-2022">V0.21 (1/29/2022)</a></li>
+<li><a class="reference internal" href="#v0-20-2-12-15-2021">V0.20.2 (12/15/2021)</a></li>
+<li><a class="reference internal" href="#v0-20-1-12-14-2021">V0.20.1 (12/14/2021)</a></li>
+<li><a class="reference internal" href="#v0-20-12-10-2021">V0.20 (12/10/2021)</a></li>
+<li><a class="reference internal" href="#v0-19-11-02-2021">V0.19 (11/02/2021)</a></li>
+<li><a class="reference internal" href="#v0-18-10-07-2021">V0.18 (10/07/2021)</a></li>
+<li><a class="reference internal" href="#v0-17-09-01-2021">V0.17 (09/01/2021)</a></li>
+<li><a class="reference internal" href="#v0-16-08-04-2021">V0.16 (08/04/2021)</a></li>
+<li><a class="reference internal" href="#v0-15-07-04-2021">V0.15 (07/04/2021)</a></li>
+<li><a class="reference internal" href="#v0-14-06-02-2021">V0.14 (06/02/2021)</a></li>
+<li><a class="reference internal" href="#v0-13-05-05-2021">V0.13 (05/05/2021)</a></li>
+<li><a class="reference internal" href="#v0-12-04-03-2021">V0.12 (04/03/2021)</a></li>
+<li><a class="reference internal" href="#v0-11-02-02-2021">V0.11 (02/02/2021)</a></li>
+<li><a class="reference internal" href="#v0-10-01-01-2021">V0.10 (01/01/2021)</a></li>
+<li><a class="reference internal" href="#v0-9-30-11-2020">V0.9 (30/11/2020)</a></li>
+<li><a class="reference internal" href="#v0-8-03-11-2020">V0.8 (03/11/2020)</a></li>
+<li><a class="reference internal" href="#v0-7-07-10-2020">V0.7 (07/10/2020)</a></li>
+<li><a class="reference internal" href="#v0-6-10-09-2020">V0.6 (10/09/2020)</a></li>
+<li><a class="reference internal" href="#v0-5-1-11-08-2020">v0.5.1 (11/08/2020)</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" id="documentation_options" data-url_root="./"
+    src="_static/documentation_options.js"></script>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script src="_static/jquery.js"></script>
+  <script src="_static/underscore.js"></script>
+  <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+  <script src="_static/doctools.js"></script>
+  <script src="_static/clipboard.min.js"></script>
+  <script src="_static/copybutton.js"></script>
+  
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+    jQuery(function () {
+      SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+  </div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://mmsegmentation.readthedocs.io/en/latest/" aria-label="OpenMMLab"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation/blob/main/demo/MMSegmentation_Tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">GitHub</a>
+          </li>
+          <li class="resources-mobile-menu-title" >
+            About
+          </li>
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://github.com/open-mmlab/mmcv" target="_blank">MMCV</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function (e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+
+</html>

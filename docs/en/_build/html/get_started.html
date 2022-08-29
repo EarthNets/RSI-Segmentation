@@ -1,0 +1,784 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prerequisites &mdash; MMSegmentation 0.24.1 documentation</title>
+  
+
+  <link rel="shortcut icon" href="_static/images/favicon.ico" />
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/readthedocs.css" type="text/css" />
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Prepare datasets" href="dataset_prepare.html" />
+  <link rel="prev" title="Welcome to RSI-Segmentation’s documentation!" href="index.html" />
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    var collapsedSections = [];
+  </script>
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+  <script>
+    MathJax = {
+        chtml: {
+            scale: 1,
+            minScale: 1,
+        },
+        svg: {
+            scale: 1,
+            minScale: 1,
+        }
+    }
+</script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://mmsegmentation.readthedocs.io/en/latest/"
+        aria-label="OpenMMLab"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation/blob/main/demo/MMSegmentation_Tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">GitHub</a>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                About
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/open-mmlab/mmcv" target="_blank">
+                  <span class="dropdown-title">MMCV </span>
+                  <p>Foundational library for computer vision</p>
+                </a>
+              </div>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                EarthNets
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/Dataset4EO" target="_blank">
+                  <span class="dropdown-title">Dataset4EO </span>
+                  <p>Re-organize remote sensing datasets.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Classification" target="_blank">
+                  <span class="dropdown-title">RSI-Classification </span>
+                  <p>Image/scene classification for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">
+                  <span class="dropdown-title">RSI-Segmentation </span>
+                  <p>Pixel-wise semantic segmentation for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Detection" target="_blank">
+                  <span class="dropdown-title">RSI-Detection </span>
+                  <p>Object detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-ChangeDetection" target="_blank">
+                  <span class="dropdown-title">RSI-ChangeDetection </span>
+                  <p>Change detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-SelfSupervised" target="_blank">
+                  <span class="dropdown-title">RSI-SelfSupervised </span>
+                  <p>Self-supervised learning for RS images.</p>
+                </a>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+  
+
+  <div class="table-of-contents-link-wrapper">
+    <span>Table of Contents</span>
+    <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+  </div>
+
+  <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+    <div class="pytorch-side-scroll">
+      <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <div class="pytorch-left-menu-search">
+          
+
+          
+          
+          
+          
+
+          
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        
+        
+        
+        
+        
+        <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#verification">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dataset_prepare.html">Prepare datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model_zoo.html">Benchmark and Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelzoo_statistics.html">Model Zoo Statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick Run</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="train.html">Train a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">Inference with pretrained models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/config.html">Tutorial 1: Learn about Configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_datasets.html">Tutorial 2: Customize Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/data_pipeline.html">Tutorial 3: Customize Data Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_models.html">Tutorial 4: Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/training_tricks.html">Tutorial 5: Training Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_runtime.html">Tutorial 6: Customize Runtime Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful Tools and Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html">Useful tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#model-serving">Model Serving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="pytorch-container">
+    <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+      <div class="pytorch-breadcrumbs-wrapper">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+            Docs
+        </a> &gt;
+      </li>
+
+        
+      <li>Prerequisites</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="_sources/get_started.md.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+      </div>
+
+      <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+        Shortcuts
+      </div>
+    </div>
+
+    <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+      <div class="pytorch-content-left">
+        
+          <div class="rst-content">
+            
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+                
+  <section id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Linux or macOS (Windows is in experimental support)</p></li>
+<li><p>Python 3.6+</p></li>
+<li><p>PyTorch 1.3+</p></li>
+<li><p>CUDA 9.2+ (If you build PyTorch from source, CUDA 9.0 is also compatible)</p></li>
+<li><p>GCC 5+</p></li>
+<li><p><a class="reference external" href="https://mmcv.readthedocs.io/en/latest/#installation">MMCV</a></p></li>
+</ul>
+<p>The compatible MMSegmentation and MMCV versions are as below. Please install the correct version of MMCV to avoid installation issues.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: center;">MMSegmentation version</th>
+<th style="text-align: center;">MMCV version</th>
+<th style="text-align: center;">MMClassification version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">master</td>
+<td style="text-align: center;">mmcv-full&gt;=1.4.4, &lt;=1.6.0</td>
+<td style="text-align: center;">mmcls&gt;=0.20.1, &lt;=1.0.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.24.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.4.4, &lt;=1.6.0</td>
+<td style="text-align: center;">mmcls&gt;=0.20.1, &lt;=1.0.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.23.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.4.4, &lt;=1.6.0</td>
+<td style="text-align: center;">mmcls&gt;=0.20.1, &lt;=1.0.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.22.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.4.4, &lt;=1.6.0</td>
+<td style="text-align: center;">mmcls&gt;=0.20.1, &lt;=1.0.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.21.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.4.4, &lt;=1.6.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.20.2</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.13, &lt;=1.6.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.19.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.13, &lt;1.3.17</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.18.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.13, &lt;1.3.17</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.17.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.7, &lt;1.3.17</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.16.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.7, &lt;1.3.17</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.15.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.7, &lt;1.3.17</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.14.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.7, &lt;1.3.17</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.14.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.1, &lt;1.3.2</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.13.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.1, &lt;1.3.2</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.12.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.4, &lt;1.3.2</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.11.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.4, &lt;1.3.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.10.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.4, &lt;1.3.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.9.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.4, &lt;1.3.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.8.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.4, &lt;1.2.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.7.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.2, &lt;1.2.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.6.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.2, &lt;1.2.0</td>
+<td style="text-align: center;">Not required</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">mmcv</span></code> first if you have mmcv installed.
+If mmcv and mmcv-full are both installed, there will be <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code>.</p>
+</div>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
+<p>a. Create a conda virtual environment and activate it.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n open-mmlab <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10 -y
+conda activate open-mmlab
+</pre></div>
+</div>
+<p>b. Install PyTorch and torchvision following the <a class="reference external" href="https://pytorch.org/">official instructions</a>.
+Here we use PyTorch 1.11.0 and CUDA 11.3.
+You may also switch to other version by specifying the version number.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.11.0 torchvision <span class="nv">cudatoolkit</span><span class="o">=</span><span class="m">11</span>.3 -c pytorch
+</pre></div>
+</div>
+<p>c. Install <a class="reference external" href="https://mmcv.readthedocs.io/en/latest/">MMCV</a> following the <a class="reference external" href="https://mmcv.readthedocs.io/en/latest/#installation">official instructions</a>.
+Either <code class="docutils literal notranslate"><span class="pre">mmcv</span></code> or <code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code> is compatible with MMSegmentation, but for methods like CCNet and PSANet, CUDA ops in <code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code> is required.</p>
+<p><strong>Install mmcv for Linux:</strong></p>
+<p>Install MMCV, we recommend you to install the pre-built mmcv as below.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/<span class="o">{</span>cu_version<span class="o">}</span>/<span class="o">{</span>torch_version<span class="o">}</span>/index.html
+</pre></div>
+</div>
+<p>Please replace <code class="docutils literal notranslate"><span class="pre">{cu_version}</span></code> and <code class="docutils literal notranslate"><span class="pre">{torch_version}</span></code> in the url to your desired one. mmcv-full is only compiled on
+PyTorch 1.x.0 because the compatibility usually holds between 1.x.0 and 1.x.1. If your PyTorch version is 1.x.1,
+you can install mmcv-full compiled with PyTorch 1.x.0 and it usually works well.
+For example, to install the <code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code> with <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">11.3</span></code> and <code class="docutils literal notranslate"><span class="pre">PyTorch</span> <span class="pre">1.11.0</span></code>, use the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.11/index.html
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://github.com/open-mmlab/mmcv#installation">here</a> for different versions of MMCV compatible to different PyTorch and CUDA versions.</p>
+<p>Optionally you can choose to compile mmcv from source by the following command</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/open-mmlab/mmcv.git
+<span class="nb">cd</span> mmcv
+<span class="nv">MMCV_WITH_OPS</span><span class="o">=</span><span class="m">1</span> pip install -e .  <span class="c1"># package mmcv-full, which contains cuda ops, will be installed after this step</span>
+<span class="c1"># OR pip install -e .  # package mmcv, which contains no cuda ops, will be installed after this step</span>
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+<p><strong>Important:</strong> You need to run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">mmcv</span></code> first if you have mmcv installed. Because if <code class="docutils literal notranslate"><span class="pre">mmcv</span></code> and <code class="docutils literal notranslate"><span class="pre">mmcv-full</span></code> are both installed, there will be <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code>.</p>
+<p><strong>Install mmcv for Windows (Experimental):</strong></p>
+<p>For Windows, the installation of MMCV requires native C++ compilers, such as cl.exe. Please add the compiler to %PATH%.</p>
+<p>A typical path for cl.exe looks like the following if you have Windows SDK and Visual Studio installed on your computer:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\P</span>rogram Files <span class="o">(</span>x86<span class="o">)</span><span class="se">\M</span>icrosoft Visual Studio<span class="se">\2</span><span class="m">019</span><span class="se">\P</span>rofessional<span class="se">\V</span>C<span class="se">\T</span>ools<span class="se">\M</span>SVC<span class="se">\1</span><span class="m">4</span>.26.28801<span class="se">\b</span>in<span class="se">\H</span>ostx86<span class="se">\x</span><span class="m">64</span>
+</pre></div>
+</div>
+<p>Or you should download the cl compiler from web and then set up the path.</p>
+<p>Then, clone mmcv from github and install mmcv via pip:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/open-mmlab/mmcv.git
+<span class="nb">cd</span> mmcv
+pip install -e .
+</pre></div>
+</div>
+<p>Or simply:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install mmcv
+</pre></div>
+</div>
+<p>Currently, mmcv-full is not supported on Windows.</p>
+<p>d. Install MMSegmentation.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install mmsegmentation <span class="c1"># install the latest release</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/open-mmlab/mmsegmentation.git <span class="c1"># install the master branch</span>
+</pre></div>
+</div>
+<p>Instead, if you would like to install MMSegmentation in <code class="docutils literal notranslate"><span class="pre">dev</span></code> mode, run following</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/open-mmlab/mmsegmentation.git
+<span class="nb">cd</span> mmsegmentation
+pip install -e .  <span class="c1"># or &quot;python setup.py develop&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>When training or testing models on Windows, please ensure that all the ‘' in paths are replaced with ‘/’. Add .replace(’', ‘/’) to your python code wherever path strings occur.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">version+git_hash</span></code> will also be saved in trained models meta, e.g. 0.5.0+c415a2e.</p></li>
+<li><p>When MMsegmentation is installed on <code class="docutils literal notranslate"><span class="pre">dev</span></code> mode, any local modifications made to the code will take effect without the need to reinstall it.</p></li>
+<li><p>If you would like to use <code class="docutils literal notranslate"><span class="pre">opencv-python-headless</span></code> instead of <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code>,
+you can install it before installing MMCV.</p></li>
+<li><p>Some dependencies are optional. Simply running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code> will only install the minimum runtime requirements.
+To use optional dependencies like <code class="docutils literal notranslate"><span class="pre">cityscapessripts</span></code>  either install them manually with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements/optional.txt</span></code> or specify desired extras when calling <code class="docutils literal notranslate"><span class="pre">pip</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.[optional]</span></code>). Valid keys for the extras field are: <code class="docutils literal notranslate"><span class="pre">all</span></code>, <code class="docutils literal notranslate"><span class="pre">tests</span></code>, <code class="docutils literal notranslate"><span class="pre">build</span></code>, and <code class="docutils literal notranslate"><span class="pre">optional</span></code>.</p></li>
+</ol>
+</div>
+<section id="a-from-scratch-setup-script">
+<h2>A from-scratch setup script<a class="headerlink" href="#a-from-scratch-setup-script" title="Permalink to this heading">¶</a></h2>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">¶</a></h3>
+<p>Here is a full script for setting up mmsegmentation with conda and link the dataset path (supposing that your dataset path is $DATA_ROOT).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n open-mmlab <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10 -y
+conda activate open-mmlab
+
+conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.11.0 torchvision <span class="nv">cudatoolkit</span><span class="o">=</span><span class="m">11</span>.3 -c pytorch
+pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.11.0/index.html
+git clone https://github.com/open-mmlab/mmsegmentation.git
+<span class="nb">cd</span> mmsegmentation
+pip install -e .  <span class="c1"># or &quot;python setup.py develop&quot;</span>
+
+mkdir data
+ln -s <span class="nv">$DATA_ROOT</span> data
+</pre></div>
+</div>
+</section>
+<section id="windows-experimental">
+<h3>Windows(Experimental)<a class="headerlink" href="#windows-experimental" title="Permalink to this heading">¶</a></h3>
+<p>Here is a full script for setting up mmsegmentation with conda and link the dataset path (supposing that your dataset path is</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n open-mmlab <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10 -y
+conda activate open-mmlab
+
+conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.11.0 torchvision <span class="nv">cudatoolkit</span><span class="o">=</span><span class="m">11</span>.3 -c pytorch
+<span class="nb">set</span> <span class="nv">PATH</span><span class="o">=</span>full<span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\y</span>our<span class="se">\c</span>pp<span class="se">\c</span>ompiler<span class="p">;</span>%PATH%
+pip install mmcv
+
+git clone https://github.com/open-mmlab/mmsegmentation.git
+<span class="nb">cd</span> mmsegmentation
+pip install -e .  <span class="c1"># or &quot;python setup.py develop&quot;</span>
+
+mklink /D data %DATA_ROOT%
+</pre></div>
+</div>
+</section>
+<section id="developing-with-multiple-mmsegmentation-versions">
+<h3>Developing with multiple MMSegmentation versions<a class="headerlink" href="#developing-with-multiple-mmsegmentation-versions" title="Permalink to this heading">¶</a></h3>
+<p>The train and test scripts already modify the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> to ensure the script use the MMSegmentation in the current directory.</p>
+<p>To use the default MMSegmentation installed in the environment rather than that you are working with, you can remove the following line in those scripts</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span><span class="s2">/..&quot;</span>:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="verification">
+<h1>Verification<a class="headerlink" href="#verification" title="Permalink to this heading">¶</a></h1>
+<p>To verify whether MMSegmentation and the required environment are installed correctly, we can run sample python codes to initialize a segmentor and inference a demo image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmseg.apis</span> <span class="kn">import</span> <span class="n">inference_segmentor</span><span class="p">,</span> <span class="n">init_segmentor</span>
+<span class="kn">import</span> <span class="nn">mmcv</span>
+
+<span class="n">config_file</span> <span class="o">=</span> <span class="s1">&#39;configs/pspnet/pspnet_r50-d8_512x1024_40k_cityscapes.py&#39;</span>
+<span class="n">checkpoint_file</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth&#39;</span>
+
+<span class="c1"># build the model from a config file and a checkpoint file</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">init_segmentor</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">)</span>
+
+<span class="c1"># test a single image and show the results</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s1">&#39;test.jpg&#39;</span>  <span class="c1"># or img = mmcv.imread(img), which will only load it once</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">inference_segmentor</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<span class="c1"># visualize the results in a new window</span>
+<span class="n">model</span><span class="o">.</span><span class="n">show_result</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># or save the visualization results to image files</span>
+<span class="c1"># you can change the opacity of the painted segmentation map in (0, 1].</span>
+<span class="n">model</span><span class="o">.</span><span class="n">show_result</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="s1">&#39;result.jpg&#39;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># test a video and show the results</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">VideoReader</span><span class="p">(</span><span class="s1">&#39;video.mp4&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">video</span><span class="p">:</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">inference_segmentor</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+   <span class="n">model</span><span class="o">.</span><span class="n">show_result</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">wait_time</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code is supposed to run successfully upon you finish the installation.</p>
+<p>We also provide a demo script to test a single image.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python demo/image_demo.py <span class="si">${</span><span class="nv">IMAGE_FILE</span><span class="si">}</span> <span class="si">${</span><span class="nv">CONFIG_FILE</span><span class="si">}</span> <span class="si">${</span><span class="nv">CHECKPOINT_FILE</span><span class="si">}</span> <span class="o">[</span>--device <span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="o">]</span> <span class="o">[</span>--palette-thr <span class="si">${</span><span class="nv">PALETTE</span><span class="si">}</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python demo/image_demo.py demo/demo.png configs/pspnet/pspnet_r50-d8_512x1024_40k_cityscapes.py <span class="se">\</span>
+    checkpoints/pspnet_r50-d8_512x1024_40k_cityscapes_20200605_003338-2966598c.pth --device cuda:0 --palette cityscapes
+</pre></div>
+</div>
+<p>A notebook demo can be found in <span class="xref myst">demo/inference_demo.ipynb</span>.</p>
+<p>Now we also provide a demo script to test a single video.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget -O demo/demo.mp4 https://user-images.githubusercontent.com/22089207/144212749-44411ef4-b564-4b37-96d4-04bedec629ab.mp4
+python demo/video_demo.py <span class="si">${</span><span class="nv">VIDEO_FILE</span><span class="si">}</span> <span class="si">${</span><span class="nv">CONFIG_FILE</span><span class="si">}</span> <span class="si">${</span><span class="nv">CHECKPOINT_FILE</span><span class="si">}</span> <span class="o">[</span>--device <span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="o">]</span> <span class="o">[</span>--palette-thr <span class="si">${</span><span class="nv">PALETTE</span><span class="si">}</span><span class="o">]</span> <span class="se">\</span>
+    <span class="o">[</span>--show<span class="o">]</span> <span class="o">[</span>--show-wait-time <span class="o">{</span>SHOW_WAIT_TIME<span class="o">}]</span> <span class="o">[</span>--output-file <span class="o">{</span>OUTPUT_FILE<span class="o">}]</span> <span class="o">[</span>--output-fps <span class="o">{</span>OUTPUT_FPS<span class="o">}]</span> <span class="se">\</span>
+    <span class="o">[</span>--output-height <span class="o">{</span>OUTPUT_HEIGHT<span class="o">}]</span> <span class="o">[</span>--output-width <span class="o">{</span>OUTPUT_WIDTH<span class="o">}]</span> <span class="o">[</span>--opacity <span class="o">{</span>OPACITY<span class="o">}]</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget -O demo/demo.mp4 https://user-images.githubusercontent.com/22089207/144212749-44411ef4-b564-4b37-96d4-04bedec629ab.mp4
+python demo/video_demo.py demo/demo.mp4 configs/cgnet/cgnet_680x680_60k_cityscapes.py <span class="se">\</span>
+    checkpoints/cgnet_680x680_60k_cityscapes_20201101_110253-4c0b2f2d.pth <span class="se">\</span>
+    --device cuda:0 --palette cityscapes --show
+</pre></div>
+</div>
+</section>
+
+
+              </article>
+              
+            </div>
+            <footer>
+  
+  <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+    
+    <a href="dataset_prepare.html" class="btn btn-neutral float-right" title="Prepare datasets" accesskey="n"
+      rel="next">Next <img src="_static/images/chevron-right-blue.svg"
+        class="next-page"></a>
+    
+    
+    <a href="index.html" class="btn btn-neutral" title="Welcome to RSI-Segmentation’s documentation!" accesskey="p"
+      rel="prev"><img src="_static/images/chevron-right-blue.svg" class="previous-page"> Previous</a>
+    
+  </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+      &copy; Copyright 2020-2021, OpenMMLab.
+
+    </p>
+  </div>
+  
+  <div>
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+      href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the
+      Docs</a>.
+  </div>
+   
+
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Prerequisites</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#a-from-scratch-setup-script">A from-scratch setup script</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#windows-experimental">Windows(Experimental)</a></li>
+<li><a class="reference internal" href="#developing-with-multiple-mmsegmentation-versions">Developing with multiple MMSegmentation versions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verification">Verification</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" id="documentation_options" data-url_root="./"
+    src="_static/documentation_options.js"></script>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script src="_static/jquery.js"></script>
+  <script src="_static/underscore.js"></script>
+  <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+  <script src="_static/doctools.js"></script>
+  <script src="_static/clipboard.min.js"></script>
+  <script src="_static/copybutton.js"></script>
+  
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+    jQuery(function () {
+      SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+  </div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://mmsegmentation.readthedocs.io/en/latest/" aria-label="OpenMMLab"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation/blob/main/demo/MMSegmentation_Tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">GitHub</a>
+          </li>
+          <li class="resources-mobile-menu-title" >
+            About
+          </li>
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://github.com/open-mmlab/mmcv" target="_blank">MMCV</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function (e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+
+</html>
