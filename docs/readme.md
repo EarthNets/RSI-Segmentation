@@ -75,3 +75,10 @@ You have to edit `pytorch_sphinx_theme` library. Go to `pytorch_sphinx_theme\pyt
 ### Side bar
 
 Edit `index.rst`.
+
+
+## Docs TODOs
+
+- [ ] Edit the contents of the page.
+- [ ] Edit the tutorial.
+- [ ] Put on `readthedocs.io` and link to EarthNets web page.

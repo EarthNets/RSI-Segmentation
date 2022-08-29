@@ -1,5 +1,5 @@
 Welcome to RSI-Segmentation's documentation!
-=======================================
+=============================================
 
 .. toctree::
    :maxdepth: 2

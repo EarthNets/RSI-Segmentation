@@ -21,9 +21,9 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'MMSegmentation'
-copyright = '2020-2021, OpenMMLab'
-author = 'MMSegmentation Authors'
+project = 'RSI-Segmentation'
+copyright = '2022, EarthNets'
+author = 'RSI-Segmentation Authors'
 version_file = '../../rsiseg/version.py'
 
 
@@ -82,17 +82,16 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'pytorch_sphinx_theme'
 html_theme_path = [pytorch_sphinx_theme.get_html_theme_path()]
-html_logo= 'https://mmsegmentation.readthedocs.io/en/latest/'
+html_logo= 'https://rsi-segmentation.readthedocs.io/en/latest/'
 html_theme_options = {
     'logo_url':
-    'https://mmsegmentation.readthedocs.io/en/latest/',
+    'https://rsi-segmentation.readthedocs.io/en/latest/',
     'menu': [
         {
-            'name':
-            'Tutorial',
+            'name': 'Tutorial',
             'url':
             'https://github.com/EarthNets/RSI-Segmentation/blob/main/'
-            'demo/MMSegmentation_Tutorial.ipynb'
+            'demo/rsi_segmentation_tutorial.ipynb'
         },
         {
             'name': 'GitHub',
