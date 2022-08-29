@@ -8,9 +8,9 @@ to `docs/_static/images/logo.png`, then write the following snippet to
 ```css
 .header-logo {
     background-image: url("../images/logo.png");
-    background-size: 110px 40px;
+    background-size: 200px 40px;
     height: 40px;
-    width: 110px;
+    width: 200px;
 }
 ```
 Here, you are recommended to fix the height to `40px` and scale the width according to the logo's aspect ratio.
