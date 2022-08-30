@@ -82,10 +82,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'pytorch_sphinx_theme'
 html_theme_path = [pytorch_sphinx_theme.get_html_theme_path()]
-html_logo= 'https://rsi-segmentation.readthedocs.io/en/latest/'
+#html_logo= 'https://rsi-segmentation.readthedocs.io/en/latest/'
 html_theme_options = {
     'logo_url':
-    'https://rsi-segmentation.readthedocs.io/en/latest/',
+    'https://rsi-segmentation.readthedocs.io/en/latest',
     'menu': [
         {
             'name': 'Tutorial',
@@ -100,13 +100,13 @@ html_theme_options = {
         {
             'name':
             'About',
-            'children': [
-                {
-                    'name': 'MMCV',
-                    'url': 'https://github.com/open-mmlab/mmcv',
-                    'description': 'Foundational library for computer vision'
-                },
-            ]
+            #'children': [
+            #   {
+            #        'name': 'MMCV',
+            #        'url': 'https://github.com/open-mmlab/mmcv',
+            #        'description': 'Foundational library for computer vision'
+            #    },
+            #]
         },
     ],
     # Specify the language of shared menu
