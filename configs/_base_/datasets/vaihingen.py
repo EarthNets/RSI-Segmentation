@@ -1,12 +1,13 @@
 # dataset settings
-dataset_type = 'ISPRSDataset'
-data_root = 'data/vaihingen'
+dataset_type = 'VaihingenDataset'
+datapipe = 'vaihingen' # [new] define datapipe name
+data_root = '/mnt/d/codes/datasets/Vaihingen'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', reduce_zero_label=True),
+    dict(type='LoadAnnotations', reduce_zero_label=False),
     dict(type='Resize', img_scale=(512, 512), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
@@ -37,18 +38,21 @@ data = dict(
     train=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='img_dir/train',
-        ann_dir='ann_dir/train',
+        datapipe=datapipe, # [new]
+        reduce_zero_label=False,
+        split='train',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='img_dir/val',
-        ann_dir='ann_dir/val',
+        datapipe=datapipe, # [new]
+        reduce_zero_label=False,
+        split='val',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='img_dir/val',
-        ann_dir='ann_dir/val',
+        datapipe=datapipe, # [new]
+        reduce_zero_label=False,
+        split='val',
         pipeline=test_pipeline))
