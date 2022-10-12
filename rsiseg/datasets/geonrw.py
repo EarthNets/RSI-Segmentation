@@ -7,8 +7,17 @@ from .custom import CustomDataset
 class GeoNRWDataset(CustomDataset):
     """GeoNRW dataset.
 
-    In segmentation map annotation for ADE20K, 0 stands for background, which
+    In segmentation map annotation for GeoNRW, 0 stands for background, which
     is not included in 150 categories. ``reduce_zero_label`` is fixed to True.    
+
+
+    - prepare dataset: follow the instructions in https://github.com/EarthNets/Dataset4EO/blob/main/Dataset4EO/datasets/_builtin/geonrw.py
+    - usage: 
+        op1. load data with pytorch dataset (the current version): inheritate `CustomDataset`
+        op2. load data with Dataset4EO datapipe: inheritate `EODataset`
+
+    
+
 
     """
     CLASSES = (
