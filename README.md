@@ -18,8 +18,16 @@ Results and models are available in the [model zoo](docs/en/model_zoo.md).
 
 Supported datasets:
 
-- [x] [RSUSS](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#cityscapes)
-- [x] [LandSlide4Sense](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#pascal-voc)
+- [x] [DFC2020](https://ieee-dataport.org/competitions/2020-ieee-grss-data-fusion-contest)
+- [x] [LandSlide4Sense](https://www.iarai.ac.at/landslide4sense/)
+- [x] [GeoNRW](https://github.com/gbaier/geonrw)
+- [x] [LoveDA](https://github.com/Junjue-Wang/LoveDA)
+- [x] [RSUSS](https://github.com/EarthNets/RSI-MMSegmentation)
+- [x] [SEASONET](https://zenodo.org/record/5850307#.Y0cayXbP1D8)
+- [x] [SSL4EO_S12](https://github.com/zhu-xlab/SSL4EO-S12)
+- [x] [Vaihingen](https://www.isprs.org/education/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx)
+
+Continually updating
 
 
 Supported backbones:
@@ -75,7 +83,6 @@ Supported methods:
 - [x] [K-Net (NeurIPS'2021)](configs/knet)
 
 
-
 ## Installation
 
 Please refer to [get_started.md](docs/en/get_started.md#installation) for installation and [dataset_prepare.md](docs/en/dataset_prepare.md#prepare-datasets) for dataset preparation.
@@ -90,9 +97,6 @@ A Colab tutorial is also provided. You may preview the notebook [here](demo/MMSe
 
 Please refer to [FAQ](docs/en/faq.md) for frequently asked questions.
 
-## Citation
-
-If you find this project useful in your research, please consider cite:
 
 ## Contributing
 
@@ -106,6 +110,10 @@ and develop their own new semantic segmentation methods.
 
 ## Projects in OpenMMLab
 
-- [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
 - [Dataset4EO](https://github.com/DeepAI4EO/Dataset4EO): Datasets downloading and loading for Remote sensing community.
+
+## Citation
+
+If you find this project useful in your research, please consider cite:
+
 
