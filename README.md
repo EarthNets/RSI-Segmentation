@@ -100,9 +100,7 @@ We appreciate all contributions. Please refer to [CONTRIBUTING.md](.github/CONTR
 
 ## Acknowledgement
 
-We wish that the toolbox and benchmark could serve the growing research
-community by providing a flexible as well as standardized toolkit to reimplement existing methods
-and develop their own new semantic segmentation methods.
+We thank [openMMlab](https://github.com/open-mmlab) for the open-source libraries with excellent features.
 
 ## Projects in EarthNets
 
