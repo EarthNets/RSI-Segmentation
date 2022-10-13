@@ -3,18 +3,15 @@
 <div  align="center">    
  <img src="resources/seg.png" width = "400" height = "140" alt="segmentation" align=center />
 </div>
-## License
 
-This project is released under the [Apache 2.0 license](LICENSE).
 
 ## Changelog
 
-v0.24.1 was released in 5/1/2022.
-Please refer to [changelog.md](docs/en/changelog.md) for details and release history.
+# Initial version
 
 ## Benchmark and model zoo
 
-Results and models are available in the [model zoo](docs/en/model_zoo.md).
+Results and models are available in the [model zoo].
 
 Supported datasets:
 
@@ -89,7 +86,7 @@ Please refer to [get_started.md](docs/en/get_started.md#installation) for instal
 
 ## Get Started
 
-Please see [train.md](docs/en/train.md) and [inference.md](docs/en/inference.md) for the basic usage of MMSegmentation.
+Please see [train.md](docs/en/train.md) and [inference.md](docs/en/inference.md) for the basic usage.
 There are also tutorials for [customizing dataset](docs/en/tutorials/customize_datasets.md), [designing data pipeline](docs/en/tutorials/data_pipeline.md), [customizing modules](docs/en/tutorials/customize_models.md), and [customizing runtime](docs/en/tutorials/customize_runtime.md).
 We also provide many [training tricks](docs/en/tutorials/training_tricks.md) for better training and [useful tools](docs/en/useful_tools.md) for deployment.
 
@@ -108,7 +105,7 @@ We wish that the toolbox and benchmark could serve the growing research
 community by providing a flexible as well as standardized toolkit to reimplement existing methods
 and develop their own new semantic segmentation methods.
 
-## Projects in OpenMMLab
+## Projects in EarthNets
 
 - [Dataset4EO](https://github.com/DeepAI4EO/Dataset4EO): Datasets downloading and loading for Remote sensing community.
 
@@ -116,4 +113,15 @@ and develop their own new semantic segmentation methods.
 
 If you find this project useful in your research, please consider cite:
 
+```BibTeX
+@article{earthnets4eo,
+    title={EarthNets: Empowering AI in Earth Observation},
+    author={Zhitong Xiong, Fahong Zhang, Yi Wang, Yilei Shi, Xiao Xiang Zhu},
+    journal = {arXiv:2210.04936},
+    year={2022}
+}
+```
 
+## License
+
+This project is released under the [Apache 2.0 license](LICENSE).
