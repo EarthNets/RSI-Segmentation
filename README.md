@@ -6,8 +6,7 @@
 
 
 ## Changelog
-
-# Initial version
+Initial version.
 
 ## Benchmark and model zoo
 
