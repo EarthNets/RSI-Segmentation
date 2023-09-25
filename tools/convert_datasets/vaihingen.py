@@ -121,6 +121,10 @@ def main():
 
     with tempfile.TemporaryDirectory(dir=args.tmp_dir) as tmp_dir:
         for zipp in zipp_list:
+
+            if 'ISPRS_semantic_labeling_Vaihingen_ground_truth_COMPLETE' in zipp:
+                continue
+
             zip_file = zipfile.ZipFile(zipp)
             zip_file.extractall(tmp_dir)
             src_path_list = glob.glob(os.path.join(tmp_dir, '*.tif'))
